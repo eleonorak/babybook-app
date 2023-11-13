@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Unit;
 use App\Models\User;
+use Carbon\PHPStan\MacroExtension;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UnitSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(MeasurementTypeSeeder::class);
+        $this->call(MedicalIntervationTypeSeeder::class);
+        $this->call(ChildrenSeeder::class);
 
 
 

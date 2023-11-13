@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MeasurementType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,9 +17,25 @@ class MeasurementTypeSeeder extends Seeder
         $measurementTypes = [
 
             [
-                'name' => 'kg',
-                'type' => 'weight',
+                'name' => 'Обем на глава',
+            ],
+            [
+                'name' => 'Висина',
+            ],
+            [
+                'name' => 'Тежина',
+            ],
+            [
+                'name' => 'Телесна температура',
             ],
             ];
+
+        foreach ($measurementTypes as $measurementType ) {
+
+            MeasurementType::query()->create([
+                'name' => $measurementType['name'],
+            ]);
+        }
+
     }
 }
