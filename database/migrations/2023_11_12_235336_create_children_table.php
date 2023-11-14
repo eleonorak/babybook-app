@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('gender');
             $table->string('photo')->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();;
             $table->timestamps();
         });
 

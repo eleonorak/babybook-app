@@ -9,4 +9,12 @@ class Child extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function breast_feeds(){
+        return $this->hasMany(BreastFeed::class);
+    }
 }

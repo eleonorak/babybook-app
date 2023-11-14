@@ -14,12 +14,18 @@ class ChildrenSeeder extends Seeder
     public function run(): void
     {
         //
-        Child::query()->create([
+        $childOne = Child::query()->create([
             'name' => 'Анастасија',
             'birth_date' => '2021-12-20',
             'gender' => 'женско',
             'photo' =>'',
             'user_id' => 1,
+        ]);
+
+        $timeNow = now()->toDateTimeString();
+        $childOne->breast_feeds()->create([
+
+            'date' => $timeNow,
         ]);
     }
 }
