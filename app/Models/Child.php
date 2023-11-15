@@ -17,4 +17,18 @@ class Child extends Model
     public function breast_feeds(){
         return $this->hasMany(BreastFeed::class);
     }
+    public  function bottle_feeds(){
+        return $this->hasMany(BottleFeed::class);
+    }
+
+    public function solid_feeds(){
+        return $this->hasMany(SolidFeed::class);
+    }
+
+    public function diaper_changes(){
+        return $this->hasMany(DiaperChange::class);
+    }
+    public function baths(){
+        return $this->hasMany(Bath::class);
+    }
 }
