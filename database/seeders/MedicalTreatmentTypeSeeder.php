@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\MedicalIntervationType;
+use App\Models\MedicalTreatmentType;
 use Illuminate\Database\Seeder;
 
-class MedicalIntervationTypeSeeder extends Seeder
+class MedicalTreatmentTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $medicalIntervationTypes = [
+        $medicalTreatmentTypes = [
 
             [
                 'name' => 'Вакцинација',
@@ -22,10 +22,10 @@ class MedicalIntervationTypeSeeder extends Seeder
             ],
         ];
 
-        foreach ($medicalIntervationTypes as $medicalIntervationType)
+        foreach ($medicalTreatmentTypes as $medicalTreatmentType)
         {
-         MedicalIntervationType::query()->create([
-               'name'  => $medicalIntervationType['name'],
+         MedicalTreatmentType::query()->create([
+               'name'  => $medicalTreatmentType['name'],
             ]);
         }
     }

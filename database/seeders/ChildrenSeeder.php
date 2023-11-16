@@ -52,5 +52,37 @@ class ChildrenSeeder extends Seeder
         $childOne->baths()->create([
             'date' => $timeBack,
         ]);
+
+        $childOne->measurements()->create([
+            'measurement_type_id'=>2,
+            'value'   => 58,
+            'date'    => $timeNow,
+            'unit_id' => 3,
+        ]);
+
+        $childOne->measurements()->create([
+            'measurement_type_id'=>3,
+            'value'   => 6,
+            'date'    => $timeNow,
+            'unit_id' => 1,
+        ]);
+
+        $childOne->measurements()->create([
+           'measurement_type_id'=>1,
+            'value'   => 35.0,
+            'date'    => $timeNow,
+            'unit_id' => 3,
+        ]);
+
+        $childOne->medical_treatments()->create([
+            'medical_treatment_type_id'=>2,
+            'date'    => $timeNow,
+        ]);
+
+        $childOne->medical_treatments()->create([
+            'medical_treatment_type_id'=>1,
+            'date'    => $timeBack,
+        ]);
+
     }
 }

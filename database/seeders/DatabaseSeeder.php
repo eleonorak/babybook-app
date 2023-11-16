@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UnitSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(MeasurementTypeSeeder::class);
-        $this->call(MedicalIntervationTypeSeeder::class);
+        $this->call(MedicalTreatmentTypeSeeder::class);
         $this->call(ChildrenSeeder::class);
 
 

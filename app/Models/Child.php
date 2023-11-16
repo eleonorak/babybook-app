@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Child extends Model
+class Child extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
     protected $guarded = ['id'];
 
     public function user() {
@@ -31,4 +34,14 @@ class Child extends Model
     public function baths(){
         return $this->hasMany(Bath::class);
     }
+
+    public function measurements(){
+        return $this->hasMany(Measurement::class);
+    }
+
+    public function medical_treatments(){
+        return $this->hasMany(MedicalTreatment::class);
+    }
+
+
 }
