@@ -17,14 +17,10 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('gender');
             $table->string('photo')->nullable();
-            $table->foreignId('user_id')->nullable();;
             $table->timestamps();
         });
 
-        Schema::table('children', function(Blueprint $table){
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
 
-        });
     }
 
     /**

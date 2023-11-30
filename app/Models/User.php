@@ -44,6 +44,6 @@ class User extends Authenticatable
     ];
 
     public function children() {
-        return $this->hasMany(Child::class);
+        return $this->belongsToMany(Child::class);
     }
 }

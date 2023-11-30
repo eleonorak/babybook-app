@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Child;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ChildrenSeeder extends Seeder
 {
@@ -19,7 +20,11 @@ class ChildrenSeeder extends Seeder
             'birth_date' => '2021-12-20',
             'gender' => 'женско',
             'photo' =>'',
-            'user_id' => 1,
+        ]);
+
+        DB::table('child_user')->insert([
+            'user_id'=>1,
+            'child_id'=>$childOne->id
         ]);
 
 
