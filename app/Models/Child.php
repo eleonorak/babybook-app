@@ -13,6 +13,15 @@ class Child extends Model implements HasMedia
     use InteractsWithMedia;
     protected $guarded = ['id'];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'birth_date' => 'date',
+    ];
+
     public function users() {
         return $this->belongsToMany(User::class);
     }

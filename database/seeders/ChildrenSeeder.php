@@ -21,10 +21,21 @@ class ChildrenSeeder extends Seeder
             'gender' => 'женско',
             'photo' =>'',
         ]);
+        $childSec = Child::query()->create([
+            'name' => 'Bebe X',
+            'birth_date' => '2023-6-20',
+            'gender' => 'машко',
+            'photo' =>'',
+        ]);
 
         DB::table('child_user')->insert([
             'user_id'=>1,
             'child_id'=>$childOne->id
+        ]);
+
+        DB::table('child_user')->insert([
+            'user_id'=>1,
+            'child_id'=>$childSec->id
         ]);
 
 

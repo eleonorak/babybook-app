@@ -17,4 +17,12 @@ class ChildController extends Controller
             'children' =>  $children,
         ]);
     }
+
+    public function create(){
+
+        return view('child.create',[
+
+        ]);
+
+    }
 }

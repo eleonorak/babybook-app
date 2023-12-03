@@ -18,6 +18,7 @@ Route::get('/', [\App\Http\Controllers\PageController::class, 'home']  )->name('
 Route::get('interesting-facts', [\App\Http\Controllers\PageController::class, 'interesting_facts']  )->name('interesting-facts');
 
 Route::get('child', [\App\Http\Controllers\ChildController::class, 'index']  )->middleware(['auth', 'verified'])->name('child.index');
+Route::get('children/create', [\App\Http\Controllers\ChildController::class, 'create']  )->middleware(['auth', 'verified'])->name('child.create');
 
 
 Route::middleware('auth')->group(function () {
