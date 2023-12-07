@@ -22,6 +22,10 @@ class Child extends Model implements HasMedia
         'birth_date' => 'date',
     ];
 
+    protected $appends = [
+      'profile_photo'
+    ];
+
     public function users() {
         return $this->belongsToMany(User::class);
     }
@@ -50,6 +54,12 @@ class Child extends Model implements HasMedia
 
     public function medical_treatments(){
         return $this->hasMany(MedicalTreatment::class);
+    }
+
+    public function getProfilePhotoAttribute() {
+        $image = $this->getMedia('profile_images')->first();
+        return $image ? $image->getUrl() : url('images/avatar.png');
+
     }
 
 

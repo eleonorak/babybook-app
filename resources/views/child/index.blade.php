@@ -15,7 +15,10 @@
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+
+
                     @if($children->count() > 0)
+
                     @foreach($children->chunk(2) as $group)
                         <div class="grid grid-cols-2 gap-4">
                             @foreach($group as $child)
@@ -23,11 +26,9 @@
                                     <div
                                         class="bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 relative shadow-xl overflow-hidden hover:shadow-2xl group rounded-xl p-5 transition-all duration-500 transform">
                                         <div class="flex items-center gap-4">
-                                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwyfHxhdmF0YXJ8ZW58MHwwfHx8MTY5MTg0NzYxMHww&ixlib=rb-4.0.3&q=80&w=1080"
-                                                 class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center object-cover rounded-full transition-all duration-500 delay-500 transform"
-                                            />
+                                            <img src="{{ $child->profile_photo }}" class="w-32 group-hover:w-36 group-hover:h-36 h-32 object-center object-cover rounded-full transition-all duration-500 delay-500 transform"/>
                                             <div class="w-fit transition-all transform duration-500">
-                                                <h1 class="text-gray-600 dark:text-gray-200 font-bold">
+                                                <h1 class="text-white dark:text-white font-bold">
                                                     {{$child->name}}
                                                 </h1>
                                                 <p class="text-gray-400">

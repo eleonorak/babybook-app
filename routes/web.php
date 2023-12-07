@@ -17,8 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\PageController::class, 'home']  )->name('home');
 Route::get('interesting-facts', [\App\Http\Controllers\PageController::class, 'interesting_facts']  )->name('interesting-facts');
 
-Route::get('child', [\App\Http\Controllers\ChildController::class, 'index']  )->middleware(['auth', 'verified'])->name('child.index');
-Route::get('children/create', [\App\Http\Controllers\ChildController::class, 'create']  )->middleware(['auth', 'verified'])->name('child.create');
+
+
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('child', [\App\Http\Controllers\ChildController::class, 'index'])->name('child.index');
+    Route::get('children/create', [\App\Http\Controllers\ChildController::class, 'create'] )->name('child.create');
+    Route::post('children/store', [\App\Http\Controllers\ChildController::class, 'store'] )->name('child.store');
+});
 
 
 Route::middleware('auth')->group(function () {
