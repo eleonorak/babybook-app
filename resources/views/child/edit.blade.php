@@ -5,6 +5,6 @@
             {{ __('Мое бебе') }}
         </h2>
     </x-slot>
-    @include('child.forms.create')
+    @include('child.forms.edit')
 
 </x-app-layout>

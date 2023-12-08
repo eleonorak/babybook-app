@@ -56,7 +56,7 @@
                                             <div class="flex justify-evenly items-center gap-2 p-2 text-white dark:text-gray-600">
 
 
-                                                <a href="#" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                                <a href="{{ route('child.edit', ['child' => $child->id]) }}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                                                     Промени
                                                 </a>
 
@@ -73,10 +73,9 @@
                         </div>
                     @endforeach
                     @else
-                        <h2>Додади дете</h2>
-                        <form>
-                            <input name="">
-                        </form>
+                        <div class="text-center bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+                            <p class="font-bold">Не се пронајдени податоци за деца</p>
+                        </div>
                     @endif
                 </div>
             </div>
