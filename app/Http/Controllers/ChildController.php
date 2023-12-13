@@ -56,7 +56,39 @@ class ChildController extends Controller
 
     }
 
-    public function update(ChildUpdateRequest $request){
+    public function update(ChildUpdateRequest $request, Child $child){
+
+        $child->fill($request->validated());
+
+        if($request->hasFile('childPhoto')) {
+
+            $image = $child->getMedia('profile_images')->first();
+            if($image){
+                $image->delete();
+            }
+
+            $image = $request->file('childPhoto');
+            $child->addMedia($image)->toMediaCollection('profile_images');
+
+        }
+        $child->save();
+
+        return Redirect::route('child.edit', ['child' => $child->id])->with('status', 'record-updated');
+
 
     }
+
+    public function destroy(Request $request, Child $child)
+    {
+        $child->delete();
+        return Redirect::route('child.index');
+    }
+
+    public function show(Request $request,Child $child){
+
+        return view("child.show",[
+            'child'=>$child->id
+        ]);
+    }
+
 }

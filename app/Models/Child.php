@@ -30,16 +30,10 @@ class Child extends Model implements HasMedia
         return $this->belongsToMany(User::class);
     }
 
-    public function breast_feeds(){
-        return $this->hasMany(BreastFeed::class);
-    }
-    public  function bottle_feeds(){
-        return $this->hasMany(BottleFeed::class);
+    public  function feedings(){
+        return $this->hasMany(Feeding::class);
     }
 
-    public function solid_feeds(){
-        return $this->hasMany(SolidFeed::class);
-    }
 
     public function diaper_changes(){
         return $this->hasMany(DiaperChange::class);
@@ -61,6 +55,4 @@ class Child extends Model implements HasMedia
         return $image ? $image->getUrl() : url('images/avatar.png');
 
     }
-
-
 }

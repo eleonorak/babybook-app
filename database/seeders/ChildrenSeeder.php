@@ -39,27 +39,40 @@ class ChildrenSeeder extends Seeder
         ]);
 
 
+
+
         $timeBack=now()->subMinutes(5)->toDateTimeString();
         $timeNow = now()->toDateTimeString();
-        $childOne->breast_feeds()->create([
 
+        $childOne->feedings()->create([
             'date' => $timeNow,
-        ]);
-
-        $childOne->bottle_feeds()->create([
-           'date' => $timeNow,
+            'feeding_type_id' => 2 ,
             'quantity' => 200.0,
             'unit_id'=>5,
         ]);
-        $childOne->bottle_feeds()->create([
+
+        $childOne->feedings()->create([
             'date' => $timeNow,
-            'quantity' => 120.0,
+            'feeding_type_id' => 2 ,
+            'quantity' => 200.0,
             'unit_id'=>5,
         ]);
 
-        $childOne->solid_feeds()->create([
+        $childOne->feedings()->create([
             'date' => $timeNow,
+            'feeding_type_id' => 1 ,
         ]);
+        $childOne->feedings()->create([
+            'date' => $timeNow,
+            'feeding_type_id' => 1 ,
+        ]);
+
+        $childOne->feedings()->create([
+            'date' => $timeNow,
+            'feeding_type_id' => 3 ,
+        ]);
+
+
 
         $childOne->diaper_changes()->create([
             'date' => $timeBack,
