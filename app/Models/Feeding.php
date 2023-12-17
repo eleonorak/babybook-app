@@ -15,6 +15,6 @@ class Feeding extends Model
     }
 
     public function type(){
-      return  $this->belongsTo(FeedingType::class);
+      return  $this->belongsTo(FeedingType::class, 'feeding_type_id', 'id');
     }
 }

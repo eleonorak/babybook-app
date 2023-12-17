@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -18,7 +19,7 @@ class ChildStoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:300',
             'gender' => 'required',
-            'birth_date' =>'required',
+            'birth_date' =>'required|date_format:Y-m-d|before:'.Carbon::now()->addDay()->format('Y-m-d'),
         ];
     }
 }

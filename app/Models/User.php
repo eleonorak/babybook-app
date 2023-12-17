@@ -46,4 +46,12 @@ class User extends Authenticatable
     public function children() {
         return $this->belongsToMany(Child::class);
     }
+
+    public function volumeUnit() {
+        return $this->belongsTo(Unit::class, 'volume_unit_id', 'id');
+    }
+
+    public function weightUnit() {
+        return $this->belongsTo(Unit::class, 'weight_unit_id', 'id');
+    }
 }

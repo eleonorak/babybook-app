@@ -17,15 +17,20 @@ class FeedingTypeSeeder extends Seeder
 
             [
                 'name' => 'Доење',
-                'measurable'=> 0
+                'measurable'=> 0,
+                'color' => '#81d4fa'
             ],
             [
                 'name' => 'Шишенце',
-                'measurable'=> 1
+                'measurable'=> 1,
+                'color' => '#aed581'
+
             ],
             [
                 'name' => 'Цврста храна',
-                'measurable'=> 0
+                'measurable'=> 0,
+                'color' => '#ffb74d',
+
             ],
         ];
 
@@ -33,7 +38,8 @@ class FeedingTypeSeeder extends Seeder
         {
             FeedingType::query()->create([
                'name'  => $feedingType['name'],
-                'measurable' => $feedingType['measurable']
+                'measurable' => $feedingType['measurable'],
+                'color' => $feedingType['color']
             ]);
         }
     }

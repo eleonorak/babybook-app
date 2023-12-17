@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ChildUpdateRequest extends FormRequest
+class FeedingUpdateRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,9 +16,11 @@ class ChildUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:300',
-            'gender' => 'required',
-            'birth_date' =>'required|date_format:Y-m-d|before:today',
+           // 'measurable' => 'required|in:1,0',
+            'feeding_type_id' => 'required|exists:feeding_types,id',
+            'quantity' => 'required_if:measurable,1',
+            'date' => 'required|date_format:Y-m-d H:i:s',
+            'notes' => 'nullable',
         ];
     }
 }

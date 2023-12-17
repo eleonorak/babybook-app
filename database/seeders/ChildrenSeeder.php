@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Child;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -41,76 +42,76 @@ class ChildrenSeeder extends Seeder
 
 
 
-        $timeBack=now()->subMinutes(5)->toDateTimeString();
-        $timeNow = now()->toDateTimeString();
+        //$timeBack=now()->subMinutes(5)->toDateTimeString();
+        //$timeNow = now()->toDateTimeString();
 
         $childOne->feedings()->create([
-            'date' => $timeNow,
+            'date' => Carbon::now()->subHours(1)->toDateTimeString(),
             'feeding_type_id' => 2 ,
             'quantity' => 200.0,
             'unit_id'=>5,
         ]);
 
         $childOne->feedings()->create([
-            'date' => $timeNow,
+            'date' => Carbon::now()->subHours(2)->toDateTimeString(),
             'feeding_type_id' => 2 ,
             'quantity' => 200.0,
             'unit_id'=>5,
         ]);
 
         $childOne->feedings()->create([
-            'date' => $timeNow,
+            'date' => Carbon::now()->subHours(3)->toDateTimeString(),
             'feeding_type_id' => 1 ,
         ]);
         $childOne->feedings()->create([
-            'date' => $timeNow,
+            'date' => Carbon::now()->subHours(4)->toDateTimeString(),
             'feeding_type_id' => 1 ,
         ]);
 
         $childOne->feedings()->create([
-            'date' => $timeNow,
+            'date' => Carbon::now()->subHours(5)->toDateTimeString(),
             'feeding_type_id' => 3 ,
         ]);
 
 
 
         $childOne->diaper_changes()->create([
-            'date' => $timeBack,
+            'date' => Carbon::now()->subHours(5)->toDateTimeString(),
         ]);
 
         $childOne->baths()->create([
-            'date' => $timeBack,
+            'date' => Carbon::now()->subHours(5)->toDateTimeString(),
         ]);
 
         $childOne->measurements()->create([
             'measurement_type_id'=>2,
             'value'   => 58,
-            'date'    => $timeNow,
+            'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
             'unit_id' => 3,
         ]);
 
         $childOne->measurements()->create([
             'measurement_type_id'=>3,
             'value'   => 6,
-            'date'    => $timeNow,
+            'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
             'unit_id' => 1,
         ]);
 
         $childOne->measurements()->create([
            'measurement_type_id'=>1,
             'value'   => 35.0,
-            'date'    => $timeNow,
+            'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
             'unit_id' => 3,
         ]);
 
         $childOne->medical_treatments()->create([
             'medical_treatment_type_id'=>2,
-            'date'    => $timeNow,
+            'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
         ]);
 
         $childOne->medical_treatments()->create([
             'medical_treatment_type_id'=>1,
-            'date'    => $timeBack,
+            'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
         ]);
 
     }

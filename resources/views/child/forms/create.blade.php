@@ -18,7 +18,7 @@
                     @endif
                 </div>
                 <div>
-                    <label for="gendre" class="mb-3 mt-6 block text-base font-medium text-[#07074D]">
+                    <label for="gender" class="mb-3 mt-6 block text-base font-medium text-[#07074D]">
                         Изберете пол
                     </label>
 
@@ -32,10 +32,10 @@
                     @endif
                 </div>
                 <div>
-                    <label for="birthday" class="mb-3 block text-base font-medium text-[#07074D]">
+                    <label for="birth_date" class="mb-3 block text-base font-medium text-[#07074D]">
                         Изберете датум на раѓање
                     </label>
-                    <input type="date" id="birth_date" name="birth_date" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-2">
+                    <input type="date" id="birth_date" name="birth_date" class=" datepicker-element focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-2" value="{{ old('birth_date') ? old('birth_date') : \Carbon\Carbon::now()->format('Y-m-d') }}>
 
                     @if(!empty($errors))
                         <x-input-error :messages="$errors->get('birth_date')" class="mt-2" />

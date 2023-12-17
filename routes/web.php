@@ -29,12 +29,29 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('children/{child}/edit', [\App\Http\Controllers\ChildController::class, 'edit'] )->name('child.edit');
     Route::post('children/store', [\App\Http\Controllers\ChildController::class, 'store'] )->name('child.store');
     Route::patch('/children/{child}', [\App\Http\Controllers\ChildController::class, 'update'])->name('child.update');
-    Route::delete('/children/{child}', [\App\Http\Controllers\ChildController::class, 'destroy'])->name('child.destroy');
+    Route::delete('children/{child}', [\App\Http\Controllers\ChildController::class, 'destroy'])->name('child.destroy');
 
     //details
     Route::get('children/{child}', [\App\Http\Controllers\ChildController::class, 'show'] )->name('child.show');
 
+    //feedings
     Route::get('children/{child}/feedings', [\App\Http\Controllers\ChildFeedingController::class, 'index'] )->name('child.feedings.index');
+    Route::get('children/{child}/feedings/create', [\App\Http\Controllers\ChildFeedingController::class, 'create'] )->name('child.feedings.create');
+    Route::get('children/{child}/feedings/{feeding}/edit', [\App\Http\Controllers\ChildFeedingController::class, 'edit'])->name('child.feedings.edit');
+    Route::post('children/{child}/feedings/store', [\App\Http\Controllers\ChildFeedingController::class, 'store'] )->name('child.feedings.store');
+    Route::patch('children/{child}/feedings/{feeding}/update', [\App\Http\Controllers\ChildFeedingController::class, 'update'])->name('child.feedings.update');
+    Route::delete('children/{child}/feedings/{feeding}/destroy', [\App\Http\Controllers\ChildFeedingController::class, 'destroy'])->name('child.feedings.destroy');
+
+    //diaper changes
+    Route::get('children/{child}/diaper-changes', [\App\Http\Controllers\ChildDiaperChangeController::class, 'index'] )->name('child.diaper-changes.index');
+    Route::get('children/{child}/diaper-changes/create', [\App\Http\Controllers\ChildDiaperChangeController::class, 'create'] )->name('child.diaper-changes.create');
+    Route::get('children/{child}/diaper-changes/{diaper_change}/edit', [\App\Http\Controllers\ChildDiaperChangeController::class, 'edit'])->name('child.diaper-changes.edit');
+    Route::post('children/{child}/diaper-changes/store', [\App\Http\Controllers\ChildDiaperChangeController::class, 'store'] )->name('child.diaper-changes.store');
+    Route::patch('children/{child}/diaper-changes/{diaper_change}/update', [\App\Http\Controllers\ChildDiaperChangeController::class, 'update'])->name('child.diaper-changes.update');
+    Route::delete('children/{child}/diaper-changes/{diaper_change}/destroy', [\App\Http\Controllers\ChildDiaperChangeController::class, 'destroy'])->name('child.diaper-changes.destroy');
+
+    //baths
+
 
 
 });

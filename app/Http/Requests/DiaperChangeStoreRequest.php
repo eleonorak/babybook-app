@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ChildUpdateRequest extends FormRequest
+class DiaperChangeStoreRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,9 +16,8 @@ class ChildUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:300',
-            'gender' => 'required',
-            'birth_date' =>'required|date_format:Y-m-d|before:today',
+            'date' => 'required|date_format:Y-m-d H:i:s',
+            'notes' => 'nullable',
         ];
     }
 }

@@ -13,32 +13,35 @@ class ChildController extends Controller
 {
     //
 
-    public  function index(){
+    public function index()
+    {
 
         $user = Auth::user();
         $children = $user->children;
-        return view('child.index',[
-            'children' =>  $children,
+        return view('child.index', [
+            'children' => $children,
         ]);
     }
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
 
-        return view('child.create',[
+        return view('child.create', [
 
         ]);
 
     }
 
 
-    public function store(ChildStoreRequest $request ){
+    public function store(ChildStoreRequest $request)
+    {
 
 
         $data = $request->validated();
 
-        $child =  $request->user()->children()->create($data);
+        $child = $request->user()->children()->create($data);
 
-        if($request->hasFile('childPhoto')) {
+        if ($child && $request->hasFile('childPhoto')) {
 
             $image = $request->file('childPhoto');
             $child->addMedia($image)->toMediaCollection('profile_images');
@@ -48,22 +51,24 @@ class ChildController extends Controller
 
     }
 
-    public function edit(Request $request, Child $child){
+    public function edit(Request $request, Child $child)
+    {
 
-        return view('child.edit',[
-           'child' => $child
+        return view('child.edit', [
+            'child' => $child
         ]);
 
     }
 
-    public function update(ChildUpdateRequest $request, Child $child){
+    public function update(ChildUpdateRequest $request, Child $child)
+    {
 
         $child->fill($request->validated());
 
-        if($request->hasFile('childPhoto')) {
+        if ($request->hasFile('childPhoto')) {
 
             $image = $child->getMedia('profile_images')->first();
-            if($image){
+            if ($image) {
                 $image->delete();
             }
 
@@ -84,10 +89,11 @@ class ChildController extends Controller
         return Redirect::route('child.index');
     }
 
-    public function show(Request $request,Child $child){
+    public function show(Request $request, Child $child)
+    {
 
-        return view("child.show",[
-            'child'=>$child->id
+        return view("child.show", [
+            'child' => $child,
         ]);
     }
 
