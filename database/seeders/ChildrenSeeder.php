@@ -73,6 +73,17 @@ class ChildrenSeeder extends Seeder
             'feeding_type_id' => 3 ,
         ]);
 
+        $childOne->sleep_periods()->create([
+            'start' => Carbon::now()->subHours(1)->toDateTimeString(),
+            'end' => Carbon::now()->subHours(1)->toDateTimeString(),
+
+            ]);
+
+        $childOne->sleep_periods()->create([
+        'start' => Carbon::now()->subHours(1)->toDateTimeString(),
+            'end' => Carbon::now()->subHours(1)->toDateTimeString(),
+
+        ]);
 
 
         $childOne->diaper_changes()->create([

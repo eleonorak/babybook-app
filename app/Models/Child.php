@@ -33,6 +33,9 @@ class Child extends Model implements HasMedia
     public  function feedings(){
         return $this->hasMany(Feeding::class);
     }
+    public  function sleep_periods(){
+        return $this->hasMany(SleepPeriod::class);
+    }
 
 
     public function diaper_changes(){

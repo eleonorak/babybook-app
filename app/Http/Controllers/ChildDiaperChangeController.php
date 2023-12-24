@@ -35,7 +35,7 @@ class ChildDiaperChangeController extends Controller
         $child->diaper_changes()->create($data);
 
         return Redirect::route('child.diaper-changes.index',[
-            'child'=>$child,
+            'child'=>$child->id,
 
         ]);
 
@@ -70,7 +70,7 @@ class ChildDiaperChangeController extends Controller
 
         $child->diaper_changes()->where('id', '=', $diaperChange->id)->delete();
         return Redirect::route('child.diaper-changes.index',[
-            'child'=>$child,
+            'child'=>$child->id,
 
         ]);
     }

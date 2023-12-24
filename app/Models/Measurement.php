@@ -10,9 +10,10 @@ class Measurement extends Model
     use HasFactory;
     protected $guarded= ['id'];
 
-    public function measurement_type(){
-         return $this->belongsTo(MeasurementType::class);
+    public function type(){
+        return  $this->belongsTo(MeasurementType::class, 'measurement_type_id', 'id');
     }
+
     public function unit(){
         return $this->belongsTo(Unit::class);
     }

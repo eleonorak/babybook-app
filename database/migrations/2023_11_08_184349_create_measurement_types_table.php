@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('measurement_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-
+            $table->string("color");
+            $table->enum("type", ['temperature', 'volume', 'length', 'weight']);
         });
     }
 

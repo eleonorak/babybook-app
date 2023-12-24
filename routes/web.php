@@ -34,7 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //details
     Route::get('children/{child}', [\App\Http\Controllers\ChildController::class, 'show'] )->name('child.show');
 
-    //feedings
+    //feeding
     Route::get('children/{child}/feedings', [\App\Http\Controllers\ChildFeedingController::class, 'index'] )->name('child.feedings.index');
     Route::get('children/{child}/feedings/create', [\App\Http\Controllers\ChildFeedingController::class, 'create'] )->name('child.feedings.create');
     Route::get('children/{child}/feedings/{feeding}/edit', [\App\Http\Controllers\ChildFeedingController::class, 'edit'])->name('child.feedings.edit');
@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('children/{child}/feedings/{feeding}/update', [\App\Http\Controllers\ChildFeedingController::class, 'update'])->name('child.feedings.update');
     Route::delete('children/{child}/feedings/{feeding}/destroy', [\App\Http\Controllers\ChildFeedingController::class, 'destroy'])->name('child.feedings.destroy');
 
-    //diaper changes
+    //diaper change
     Route::get('children/{child}/diaper-changes', [\App\Http\Controllers\ChildDiaperChangeController::class, 'index'] )->name('child.diaper-changes.index');
     Route::get('children/{child}/diaper-changes/create', [\App\Http\Controllers\ChildDiaperChangeController::class, 'create'] )->name('child.diaper-changes.create');
     Route::get('children/{child}/diaper-changes/{diaper_change}/edit', [\App\Http\Controllers\ChildDiaperChangeController::class, 'edit'])->name('child.diaper-changes.edit');
@@ -50,7 +50,33 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('children/{child}/diaper-changes/{diaper_change}/update', [\App\Http\Controllers\ChildDiaperChangeController::class, 'update'])->name('child.diaper-changes.update');
     Route::delete('children/{child}/diaper-changes/{diaper_change}/destroy', [\App\Http\Controllers\ChildDiaperChangeController::class, 'destroy'])->name('child.diaper-changes.destroy');
 
-    //baths
+    //bath
+    Route::get('children/{child}/baths', [\App\Http\Controllers\ChildBathController::class, 'index'] )->name('child.baths.index');
+    Route::get('children/{child}/baths/create', [\App\Http\Controllers\ChildBathController::class, 'create'] )->name('child.baths.create');
+    Route::get('children/{child}/baths/{bath}/edit', [\App\Http\Controllers\ChildBathController::class, 'edit'])->name('child.baths.edit');
+    Route::post('children/{child}/baths/store', [\App\Http\Controllers\ChildBathController::class, 'store'] )->name('child.baths.store');
+    Route::patch('children/{child}/baths/{bath}/update', [\App\Http\Controllers\ChildBathController::class, 'update'])->name('child.baths.update');
+    Route::delete('children/{child}/baths/{bath}/destroy', [\App\Http\Controllers\ChildBathController::class, 'destroy'])->name('child.baths.destroy');
+
+    //sleep period
+
+    Route::get('children/{child}/sleep-periods', [\App\Http\Controllers\ChildSleepPeriodController::class, 'index'] )->name('child.sleep-periods.index');
+    Route::get('children/{child}/sleep-periods/create', [\App\Http\Controllers\ChildSleepPeriodController::class, 'create'] )->name('child.sleep-periods.create');
+    Route::get('children/{child}/sleep-periods/{sleep_period}/edit', [\App\Http\Controllers\ChildSleepPeriodController::class, 'edit'])->name('child.sleep-periods.edit');
+    Route::post('children/{child}/sleep-periods/store', [\App\Http\Controllers\ChildSleepPeriodController::class, 'store'] )->name('child.sleep-periods.store');
+    Route::patch('children/{child}/sleep-periods/{sleep_period}/update', [\App\Http\Controllers\ChildSleepPeriodController::class, 'update'])->name('child.sleep-periods.update');
+    Route::delete('children/{child}/sleep-periods/{sleep_period}/destroy', [\App\Http\Controllers\ChildSleepPeriodController::class, 'destroy'])->name('child.sleep-periods.destroy');
+
+    // measurement
+    Route::get('children/{child}/measurements', [\App\Http\Controllers\ChildMeasurementController::class, 'index'] )->name('child.measurements.index');
+    Route::get('children/{child}/measurements/create', [\App\Http\Controllers\ChildMeasurementController::class, 'create'] )->name('child.measurements.create');
+    Route::get('children/{child}/measurements/{measurement}/edit', [\App\Http\Controllers\ChildMeasurementController::class, 'edit'])->name('child.measurements.edit');
+    Route::post('children/{child}/measurements/store', [\App\Http\Controllers\ChildMeasurementController::class, 'store'] )->name('child.measurements.store');
+    Route::patch('children/{child}/measurements/{measurement}/update', [\App\Http\Controllers\ChildMeasurementController::class, 'update'])->name('child.measurements.update');
+    Route::delete('children/{child}/measurements/{measurement}/destroy', [\App\Http\Controllers\ChildMeasurementController::class, 'destroy'])->name('child.measurements.destroy');
+
+
+
 
 
 

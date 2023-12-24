@@ -38,7 +38,6 @@ class ChildFeedingController extends Controller
         }
 
 
-
         return view('child.feedings.create',[
             'child' => $child,
             'feedingsTypes' => $feedingsTypes,
@@ -91,7 +90,7 @@ class ChildFeedingController extends Controller
          $child->feedings()->where('id', '=', $feeding->id)->delete();
 
         return Redirect::route('child.feedings.index',[
-            'child'=>$child,
+            'child'=>$child->id,
         ]);
     }
 }

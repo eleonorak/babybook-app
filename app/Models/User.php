@@ -43,15 +43,68 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function children() {
+    /**
+     * List of children
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany|Child[]
+     */
+    public function children()
+    {
         return $this->belongsToMany(Child::class);
     }
 
-    public function volumeUnit() {
+    /**
+     * The unit
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|Unit
+     */
+    public function lengthUnit()
+    {
+        return $this->belongsTo(Unit::class, 'length_unit_id', 'id');
+    }
+
+    /**
+     * The unit
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|Unit
+     */
+    public function volumeUnit()
+    {
         return $this->belongsTo(Unit::class, 'volume_unit_id', 'id');
     }
 
-    public function weightUnit() {
+    /**
+     * The unit
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|Unit
+     */
+    public function weightUnit()
+    {
         return $this->belongsTo(Unit::class, 'weight_unit_id', 'id');
+    }
+
+    /**
+     * The unit
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|Unit
+     */
+    public function temperatureUnit()
+    {
+        return $this->belongsTo(Unit::class, 'temperature_unit_id', 'id');
+    }
+
+    /**
+     * The unit type
+     * @param $type
+     * @return Unit|\Illuminate\Database\Eloquent\Relations\BelongsTo|Unit|null
+     */
+    public function getUnit($type)
+    {
+        switch ($type) {
+            case 'length':
+                return $this->lengthUnit;
+            case 'weight':
+                return $this->weightUnit;
+            case 'volume':
+                return $this->volumeUnit;
+            case 'temperature':
+                return $this->temperatureUnit;
+        }
+        return null;
     }
 }

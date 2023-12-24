@@ -32,7 +32,14 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+           $table->dropForeign(['weight_unit_id']);
+            $table->dropForeign(['length_unit_id']);
+            $table->dropForeign(['volume_unit_id']);
+            $table->dropForeign(['temperature_unit_id']);
+            $table->dropColumn('weight_unit_id');
+            $table->dropColumn('length_unit_id');
+            $table->dropColumn('volume_unit_id');
+            $table->dropColumn('temperature_unit_id');
         });
     }
 };
