@@ -16,9 +16,13 @@ class MedicalTreatmentTypeSeeder extends Seeder
 
             [
                 'name' => 'Вакцинација',
+                'color' => '#8b5cf6',
+
             ],
             [
                 'name' => 'Лекови',
+                'color' => '#aed581',
+
             ],
         ];
 
@@ -26,6 +30,7 @@ class MedicalTreatmentTypeSeeder extends Seeder
         {
          MedicalTreatmentType::query()->create([
                'name'  => $medicalTreatmentType['name'],
+               'color'  => $medicalTreatmentType['color'],
             ]);
         }
     }

@@ -52,11 +52,8 @@ class ChildDiaperChangeController extends Controller
     public function update(DiaperChangeUpdateRequest $request,Child $child,DiaperChange $diaperChange){
 
         $data = $request->validated();
-
-
-        $thisDiaperChange = $child->diaper_changes()->find($diaperChange->id);
-        $thisDiaperChange->fill($data);
-        $thisDiaperChange->save();
+        $diaperChange->fill($data);
+        $diaperChange->save();
 
         return Redirect::route('child.diaper-changes.edit',[
             'child'=>$child->id,

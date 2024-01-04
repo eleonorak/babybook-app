@@ -1,8 +1,3 @@
-@php
-
-if(!$errors->isEmpty())
-    dd($errors)
-@endphp
 
 <form action="{{route('child.measurements.update',['child'=>$child->id,'measurement'=>$measurement->id])}}" method="POST">
     {{ csrf_field() }}
@@ -27,7 +22,7 @@ if(!$errors->isEmpty())
                         <label for="value" class="mb-3 block text-base font-medium text-[#07074D]">
                             Измерена вредност
                         </label>
-                        <input  width="48" height="48"  type="text" name="value" id="value" value="{{$measurement->value}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500"  placeholder="Количина во {{ $unit->name }}"/>
+                        <input  width="48" height="48"  type="text" name="value" id="value" value="{{old('value',$measurement->value)}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500"  placeholder="Количина во {{ $unit->name }}"/>
 
                         @if(!empty($errors))
                             <x-input-error :messages="$errors->get('value')" class="mt-2" />
@@ -38,7 +33,7 @@ if(!$errors->isEmpty())
                     <label for="date" class="my-6 block text-base font-medium text-[#07074D]">
                         Изберете датум
                     </label>
-                    <input type="text" name="date" id="date" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум " value="{{ $measurement->date }}"/>
+                    <input type="text" name="date" id="date" value="{{old('date',$measurement->date)}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум " />
 
                     @if(!empty($errors))
                         <x-input-error :messages="$errors->get('date')" class="mt-2" />
@@ -49,7 +44,7 @@ if(!$errors->isEmpty())
 
                     <label for="notes" class="my-6 block text-base font-medium text-[#07074D]">Внесете забелешка</label>
 
-                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка">{{$measurement->notes}}</textarea>
+                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка"> {{old('notes',$measurement->notes)}}</textarea>
 
                 </div>
 

@@ -62,8 +62,8 @@ class ChildController extends Controller
 
     public function update(ChildUpdateRequest $request, Child $child)
     {
-
-        $child->fill($request->validated());
+        $data = $request->validated();
+        $child->fill($data);
 
         if ($request->hasFile('childPhoto')) {
 
@@ -83,18 +83,18 @@ class ChildController extends Controller
 
     }
 
-    public function destroy(Request $request, Child $child)
-    {
-        $child->delete();
-        return Redirect::route('child.index');
-    }
-
     public function show(Request $request, Child $child)
     {
 
         return view("child.show", [
             'child' => $child,
         ]);
+    }
+
+    public function destroy(Request $request, Child $child)
+    {
+        $child->delete();
+        return Redirect::route('child.index');
     }
 
 }

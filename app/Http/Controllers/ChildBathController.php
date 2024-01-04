@@ -51,12 +51,8 @@ class ChildBathController extends Controller
 
     public function update(BathUpdateRequest $request,Child $child,Bath $bath){
         $data = $request->validated();
-
-
-        $thisBath = $child->baths()->find($bath->id);
-        $thisBath->fill($data);
-        $thisBath->save();
-
+        $bath->fill($data);
+        $bath->save();
         return Redirect::route('child.baths.edit',[
             'child'=>$child->id,
             'bath'=>$bath->id

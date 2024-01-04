@@ -10,8 +10,8 @@ class MedicalTreatment extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function medical_treatment_type(){
-        return $this->belongsTo(MedicalTreatmentType::class);
+    public function type(){
+        return $this->belongsTo(MedicalTreatmentType::class,'medical_treatment_type_id','id');
     }
 
 

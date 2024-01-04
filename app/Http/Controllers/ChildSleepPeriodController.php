@@ -51,9 +51,8 @@ class ChildSleepPeriodController extends Controller
 
         $data = $request->validated();
 
-        $thisSleepPeriod = $child->sleep_periods()->find($sleepPeriod->id);
-        $thisSleepPeriod->fill($data);
-        $thisSleepPeriod->save();
+        $sleepPeriod->fill($data);
+        $sleepPeriod->save();
 
         return Redirect::route('child.sleep-periods.edit',[
             'child'=>$child->id,

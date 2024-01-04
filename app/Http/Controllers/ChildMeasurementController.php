@@ -61,6 +61,8 @@ class ChildMeasurementController extends Controller
     public function edit(Request $request, Child $child, Measurement $measurement){
         $type = $measurement->type->type;
         $unit = $request->user()->getUnit($type);
+
+
         return view('child.measurements.edit',[
             'child' => $child,
             'measurement'=>$measurement,

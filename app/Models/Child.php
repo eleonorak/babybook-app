@@ -53,9 +53,31 @@ class Child extends Model implements HasMedia
         return $this->hasMany(MedicalTreatment::class);
     }
 
+    public function photos(){
+        return $this->hasMany(ChildPhoto::class);
+    }
+
     public function getProfilePhotoAttribute() {
         $image = $this->getMedia('profile_images')->first();
         return $image ? $image->getUrl() : url('images/avatar.png');
 
+    }
+
+    public function getGallery($max) {
+
+        $gallery = $this->photos()
+            ->where('type', 'LIKE', 'month%')
+            ->orderBy('id', 'ASC')
+            ->get();
+
+        $months = range(0, $max);
+        $final = [];
+
+        foreach($months as $month) {
+            $photo = $gallery->where('type', '=', 'month'.$month)->first();
+            $final[$month] = $photo;
+        }
+
+        return $final;
     }
 }

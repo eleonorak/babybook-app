@@ -23,7 +23,7 @@
                         <label for="quantity" class="mb-3 block text-base font-medium text-[#07074D]">
                             Внесете количина
                         </label>
-                        <input  width="48" height="48"  type="text" name="quantity" id="quantity" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500"  placeholder="Количина во {{ $user->volumeUnit->name }}"/>
+                        <input  width="48" height="48"  type="text" name="quantity" id="quantity" value="{{old('quantity')}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500"  placeholder="Количина во {{ $user->volumeUnit->name }}"/>
 
                         @if(!empty($errors))
                             <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
@@ -48,7 +48,7 @@
 
                     <label for="notes" class="my-6 block text-base font-medium text-[#07074D]">Внесете забелешка</label>
 
-                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка"></textarea>
+                    <textarea id="notes" name="notes"  rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка">{{old('quantity')}}</textarea>
 
                 </div>
 

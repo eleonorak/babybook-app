@@ -23,7 +23,7 @@ Route::get('interesting-facts', [\App\Http\Controllers\PageController::class, 'i
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    //general routes
+    // general routes
     Route::get('child', [\App\Http\Controllers\ChildController::class, 'index'])->name('child.index');
     Route::get('children/create', [\App\Http\Controllers\ChildController::class, 'create'] )->name('child.create');
     Route::get('children/{child}/edit', [\App\Http\Controllers\ChildController::class, 'edit'] )->name('child.edit');
@@ -31,10 +31,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/children/{child}', [\App\Http\Controllers\ChildController::class, 'update'])->name('child.update');
     Route::delete('children/{child}', [\App\Http\Controllers\ChildController::class, 'destroy'])->name('child.destroy');
 
-    //details
+    // details
     Route::get('children/{child}', [\App\Http\Controllers\ChildController::class, 'show'] )->name('child.show');
 
-    //feeding
+    // feeding
     Route::get('children/{child}/feedings', [\App\Http\Controllers\ChildFeedingController::class, 'index'] )->name('child.feedings.index');
     Route::get('children/{child}/feedings/create', [\App\Http\Controllers\ChildFeedingController::class, 'create'] )->name('child.feedings.create');
     Route::get('children/{child}/feedings/{feeding}/edit', [\App\Http\Controllers\ChildFeedingController::class, 'edit'])->name('child.feedings.edit');
@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('children/{child}/feedings/{feeding}/update', [\App\Http\Controllers\ChildFeedingController::class, 'update'])->name('child.feedings.update');
     Route::delete('children/{child}/feedings/{feeding}/destroy', [\App\Http\Controllers\ChildFeedingController::class, 'destroy'])->name('child.feedings.destroy');
 
-    //diaper change
+    // diaper change
     Route::get('children/{child}/diaper-changes', [\App\Http\Controllers\ChildDiaperChangeController::class, 'index'] )->name('child.diaper-changes.index');
     Route::get('children/{child}/diaper-changes/create', [\App\Http\Controllers\ChildDiaperChangeController::class, 'create'] )->name('child.diaper-changes.create');
     Route::get('children/{child}/diaper-changes/{diaper_change}/edit', [\App\Http\Controllers\ChildDiaperChangeController::class, 'edit'])->name('child.diaper-changes.edit');
@@ -50,7 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('children/{child}/diaper-changes/{diaper_change}/update', [\App\Http\Controllers\ChildDiaperChangeController::class, 'update'])->name('child.diaper-changes.update');
     Route::delete('children/{child}/diaper-changes/{diaper_change}/destroy', [\App\Http\Controllers\ChildDiaperChangeController::class, 'destroy'])->name('child.diaper-changes.destroy');
 
-    //bath
+    // bath
     Route::get('children/{child}/baths', [\App\Http\Controllers\ChildBathController::class, 'index'] )->name('child.baths.index');
     Route::get('children/{child}/baths/create', [\App\Http\Controllers\ChildBathController::class, 'create'] )->name('child.baths.create');
     Route::get('children/{child}/baths/{bath}/edit', [\App\Http\Controllers\ChildBathController::class, 'edit'])->name('child.baths.edit');
@@ -58,7 +58,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('children/{child}/baths/{bath}/update', [\App\Http\Controllers\ChildBathController::class, 'update'])->name('child.baths.update');
     Route::delete('children/{child}/baths/{bath}/destroy', [\App\Http\Controllers\ChildBathController::class, 'destroy'])->name('child.baths.destroy');
 
-    //sleep period
+    // sleep period
 
     Route::get('children/{child}/sleep-periods', [\App\Http\Controllers\ChildSleepPeriodController::class, 'index'] )->name('child.sleep-periods.index');
     Route::get('children/{child}/sleep-periods/create', [\App\Http\Controllers\ChildSleepPeriodController::class, 'create'] )->name('child.sleep-periods.create');
@@ -75,10 +75,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('children/{child}/measurements/{measurement}/update', [\App\Http\Controllers\ChildMeasurementController::class, 'update'])->name('child.measurements.update');
     Route::delete('children/{child}/measurements/{measurement}/destroy', [\App\Http\Controllers\ChildMeasurementController::class, 'destroy'])->name('child.measurements.destroy');
 
+    // medical treatment
+    Route::get('children/{child}/medical-treatments', [\App\Http\Controllers\ChildMedicalTreatmentController::class, 'index'] )->name('child.medical-treatments.index');
+    Route::get('children/{child}/medical-treatments/create', [\App\Http\Controllers\ChildMedicalTreatmentController::class, 'create'] )->name('child.medical-treatments.create');
+    Route::get('children/{child}/medical-treatments/{medical_treatment}/edit', [\App\Http\Controllers\ChildMedicalTreatmentController::class, 'edit'])->name('child.medical-treatments.edit');
+    Route::post('children/{child}/medical-treatments/store', [\App\Http\Controllers\ChildMedicalTreatmentController::class, 'store'] )->name('child.medical-treatments.store');
+    Route::patch('children/{child}/medical-treatments/{medical_treatment}/update', [\App\Http\Controllers\ChildMedicalTreatmentController::class, 'update'])->name('child.medical-treatments.update');
+    Route::delete('children/{child}/medical-treatments/{medical_treatment}/destroy', [\App\Http\Controllers\ChildMedicalTreatmentController::class, 'destroy'])->name('child.medical-treatments.destroy');
 
-
-
-
+    // gallery
+    Route::get('children/{child}/gallery', [\App\Http\Controllers\ChildGalleryController::class, 'index'])->name('child.gallery.index');
+    Route::post('children/{child}/gallery/upload', [\App\Http\Controllers\ChildGalleryController::class, 'upload'])->name('child.gallery.upload');
 
 });
 

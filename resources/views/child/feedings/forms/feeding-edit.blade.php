@@ -29,7 +29,7 @@
                         <label for="quantity" class="mb-3 block text-base font-medium text-[#07074D]">
                             Внесете количина
                         </label>
-                        <input  width="48" height="48"  type="text" name="quantity" id="quantity" value="{{$feeding->quantity}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500"  placeholder="Количина во {{ $user->volumeUnit->name }}"/>
+                        <input  width="48" height="48"  type="text" name="quantity" id="quantity" value="{{old('quantity',$feeding->quantity)}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500"  placeholder="Количина во {{ $user->volumeUnit->name }}"/>
 
                         @if(!empty($errors))
                             <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
@@ -43,7 +43,7 @@
                     <label for="date" class="my-6 block text-base font-medium text-[#07074D]">
                         Изберете датум
                     </label>
-                    <input type="text" name="date" id="date" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум " value="{{ $feeding->date }}"/>
+                    <input type="text" name="date" id="date" value="{{old('date',$feeding->date)}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум "/>
 
                     @if(!empty($errors))
                         <x-input-error :messages="$errors->get('date')" class="mt-2" />
@@ -54,7 +54,7 @@
 
                     <label for="notes" class="my-6 block text-base font-medium text-[#07074D]">Внесете забелешка</label>
 
-                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка">{{$feeding->notes}}</textarea>
+                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка">{{old('notes',$feeding->notes)}}</textarea>
 
                 </div>
 

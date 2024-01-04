@@ -13,7 +13,7 @@
                     <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
                         Внесете име
                     </label>
-                    <input type="text" name="name" id="name" value="{{$child->name}}" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500"  placeholder="Име "/>
+                    <input type="text" name="name" id="name" value="{{old('name',$child->name)}}"  class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500"  placeholder="Име "/>
 
                     @if(!empty($errors))
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -44,7 +44,7 @@
                     <label for="birthday" class="mb-3 block text-base font-medium text-[#07074D]">
                         Изберете датум на раѓање
                     </label>
-                    <input type="date" id="birth_date" value="{{$child->birth_date->format('Y-m-d')}}" name="birth_date" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-2">
+                    <input type="date" id="birth_date"  value="{{old('birth_date',$child->birth_date->format('Y-m-d'))}}" name="birth_date" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-2">
 
 
                     @if(!empty($errors))

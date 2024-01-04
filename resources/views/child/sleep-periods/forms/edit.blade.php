@@ -16,7 +16,7 @@
                     <label for="start" class="my-6 block text-base font-medium text-[#07074D]">
                         Од
                     </label>
-                    <input type="text" name="start" id="start" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум " value="{{$sleepPeriod->start}}"/>
+                    <input type="text" name="start" id="start"  value="{{old('start',$sleepPeriod->start)}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум "/>
 
                     @if(!empty($errors))
                         <x-input-error :messages="$errors->get('start')" class="mt-2" />
@@ -26,7 +26,7 @@
                     <label for="end" class="my-6 block text-base font-medium text-[#07074D]">
                         До
                     </label>
-                    <input type="text" name="end" id="end" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум " value="{{$sleepPeriod->end}}"/>
+                    <input type="text" name="end" id="end" value="{{old('end',$sleepPeriod->end)}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум " />
 
                     @if(!empty($errors))
                         <x-input-error :messages="$errors->get('end')" class="mt-2" />
@@ -36,7 +36,7 @@
                 <div>
                     <label for="notes" class="my-6 block text-base font-medium text-[#07074D]">Внесете забелешка</label>
 
-                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка">{{$sleepPeriod->notes}}</textarea>
+                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка">{{old('notes',$sleepPeriod->notes)}}</textarea>
                 </div>
 
                 <div class="flex justify-center my-6">

@@ -8,10 +8,10 @@
             </div>
             <div class="">
                 <div>
-                    <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
+                    <label for="name"  class="mb-3 block text-base font-medium text-[#07074D]">
                         Внесете име
                     </label>
-                    <input type="text" name="name" id="name" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500"  placeholder="Име "/>
+                    <input type="text" name="name" id="name" value="{{old('name')}}" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500"  placeholder="Име "/>
 
                     @if(!empty($errors))
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -22,9 +22,9 @@
                         Изберете пол
                     </label>
 
-                    <input type="radio" id="gender1" name="gender" value="M" class="focus:outline-none  border-b pb-2 border-sky-400 placeholder-gray-500 my-3">
+                    <input {{ old('gender') === 'M' ? 'checked' : '' }} type="radio" id="gender1" name="gender" value="M" class="focus:outline-none  border-b pb-2 border-sky-400 placeholder-gray-500 my-3">
                     Машко
-                    <input type="radio" id="gender2" name="gender" value="F" class="focus:outline-none border-b pb-2 border-sky-400 placeholder-gray-500 my-3" >
+                    <input {{ old('gender') === 'F' ? 'checked' : '' }} type="radio" id="gender2" name="gender" value="F" class="focus:outline-none border-b pb-2 border-sky-400 placeholder-gray-500 my-3" >
                     Женско
 
                     @if(!empty($errors))
@@ -46,7 +46,7 @@
                     <label for="childPhoto" class="mb-3 mt-5 block text-base font-medium text-[#07074D]">
                         Изберете слика
                     </label>
-                    <input type="file" id="childPhoto" name="childPhoto" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8">
+                    <input type="file" id="childPhoto" name="childPhoto"  class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 mb-8">
                 </div>
 
                 <div class="flex justify-center my-6">

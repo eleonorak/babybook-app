@@ -5,13 +5,15 @@
         </h2>
 
         <div class="sm:col-span-4 float-right">
-            <a href="{{route('child.diaper-changes.index',['child'=>$child->id])}}"
+            <a href="{{ route('child.medical-treatments.index',['child'=>$child->id]) }}"
                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Назад</a>
         </div>
     </x-slot>
 
 
-    @include('child.diaper-changes.forms.create');
+
+    @include('child.medical-treatments.forms.medical-treatment-edit')
+
 
 
 </x-app-layout>

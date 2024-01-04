@@ -37,7 +37,7 @@
                 <div>
                     <label for="notes" class="my-6 block text-base font-medium text-[#07074D]">Внесете забелешка</label>
 
-                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка"></textarea>
+                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка">{{old('notes')}}</textarea>
                 </div>
 
                 <div class="flex justify-center my-6">

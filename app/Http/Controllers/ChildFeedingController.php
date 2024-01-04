@@ -74,9 +74,8 @@ class ChildFeedingController extends Controller
         $data = $request->validated();
         $data['unit_id'] = Auth::user()->volume_unit_id;
 
-        $thisFeeding = $child->feedings()->find($feeding->id);
-        $thisFeeding->fill($data);
-        $thisFeeding->save();
+        $feeding->fill($data);
+        $feeding->save();
 
 
         return Redirect::route('child.feedings.edit',['child'=>$child->id,'feeding'=>$feeding->id])->with('status', 'record-updated');

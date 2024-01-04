@@ -16,7 +16,7 @@
                     <label for="date" class="my-6 block text-base font-medium text-[#07074D]">
                         Изберете датум
                     </label>
-                    <input type="text" name="date" id="date" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум " value="{{$diaperChanges->date}}"/>
+                    <input type="text" name="date" id="date" value="{{old('date',$diaperChanges->date)}}" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full datetimepicker-element"  placeholder="Датум "/>
 
                     @if(!empty($errors))
                         <x-input-error :messages="$errors->get('date')" class="mt-2" />
@@ -26,7 +26,7 @@
                 <div>
                     <label for="notes" class="my-6 block text-base font-medium text-[#07074D]">Внесете забелешка</label>
 
-                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка">{{$diaperChanges->notes}}</textarea>
+                    <textarea id="notes" name="notes" rows="4" cols="50" class="focus:outline-none border-b  pb-2 border-sky-400 placeholder-gray-500 w-full"  placeholder="Забелешка">{{old('notes',$diaperChanges->notes)}}</textarea>
                 </div>
 
                 <div class="flex justify-center my-6">
