@@ -1,1 +1,1 @@
-<x-btn-primary>{{ $slot }}</x-btn-primary>
+<x-btn-primary {{ $attributes }}>{{ $slot }}</x-btn-primary>
