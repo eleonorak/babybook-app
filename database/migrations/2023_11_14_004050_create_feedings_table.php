@@ -11,8 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-
         Schema::create('feedings', function (Blueprint $table) {
             $table->id();
             $table->dateTime('date');
@@ -23,13 +21,14 @@ return new class extends Migration
             $table->string('notes')->nullable();
             $table->timestamps();
         });
-
         Schema::table('feedings',function (Blueprint $table){
             $table->foreign('feeding_type_id')->references('id')->on('feeding_types')->cascadeOnDelete();
             $table->foreign('child_id')->references('id')->on('children')->cascadeOnDelete();
             $table->foreign('unit_id')->references('id')->on('units')->cascadeOnDelete();
         });
     }
+
+
 
     /**
      * Reverse the migrations.

@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('feeding_types', function (Blueprint $table) {
+        Schema::create('tests', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->tinyInteger("measurable");
-            $table->string("color");
+            $table->timestamps();
         });
     }
 
@@ -24,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feeding_types');
+        Schema::dropIfExists('tests');
     }
 };
-
-

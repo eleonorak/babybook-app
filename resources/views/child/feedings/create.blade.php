@@ -24,4 +24,24 @@
 
 
 
+
+
+    {{-- Tailwind CSS --}}
+
+    <div class="bg-red w-[100px] h-[100px]">Hello World</div>
+
+
+    {{-- Традиционален CSS --}}
+    <style>
+        .box {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <div class="box">Hello World</div>
+
+
+
+
 </x-app-layout>
