@@ -4,13 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Child extends Model implements HasMedia
+class Child extends Model
 {
     use HasFactory;
-    use InteractsWithMedia;
     protected $guarded = ['id'];
 
     /**
@@ -58,8 +55,7 @@ class Child extends Model implements HasMedia
     }
 
     public function getProfilePhotoAttribute() {
-        $image = $this->getMedia('profile_images')->first();
-        return $image ? $image->getUrl() : url('images/avatar.png');
+        return url('images/avatar.png');
 
     }
 
