@@ -10,6 +10,8 @@ class Feeding extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    protected $casts = ['date' => 'datetime'];
+
     public function unit(){
        return  $this->belongsTo(Unit::class);
     }

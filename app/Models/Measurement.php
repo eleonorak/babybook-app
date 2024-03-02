@@ -10,6 +10,8 @@ class Measurement extends Model
     use HasFactory;
     protected $guarded= ['id'];
 
+    protected $casts = ['date' => 'datetime'];
+
     public function type(){
         return  $this->belongsTo(MeasurementType::class, 'measurement_type_id', 'id');
     }

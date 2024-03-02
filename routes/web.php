@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\PageController::class, 'home']  )->name('home');
-Route::get('/growth', [\App\Http\Controllers\GrowthFactController::class, 'index']  )->name('growth');
-
-
-
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
+    // General pages
+    Route::get('/', [\App\Http\Controllers\PageController::class, 'home']  )->name('home');
+    Route::get('/growth', [\App\Http\Controllers\GrowthFactController::class, 'index']  )->name('growth');
 
     // general routes
     Route::get('children', [\App\Http\Controllers\ChildController::class, 'index'])->name('child.index');

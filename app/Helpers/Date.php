@@ -6,6 +6,17 @@ use DateTime;
 
 class Date
 {
+
+    /**
+     * Format datetime
+     *
+     * @param $date
+     * @return mixed|string
+     */
+    public static function format($date) {
+        return $date instanceof DateTime ? $date->format('d.m.Y H:i:s') : $date;
+    }
+
     /**
      * Display age in format:
      * '%y years, %m months and %d days old'
