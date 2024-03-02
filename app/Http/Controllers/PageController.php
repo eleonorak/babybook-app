@@ -10,8 +10,4 @@ class PageController extends Controller
     public function home(){
         return view("home");
     }
-
-    public function interesting_facts(){
-        return view("interesting-facts");
-    }
 }

@@ -16,8 +16,8 @@
                         {{ __('Почетна') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('interesting-facts')" :active="request()->routeIs('interesting-facts')">
-                        {{ __('Занимливости') }}
+                    <x-nav-link :href="route('growth')" :active="request()->routeIs('growth')">
+                        {{ __('Раст и развој') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('child.index')" :active="request()->routeIs('child.index')">
@@ -88,8 +88,8 @@
                 {{ __('Почетна') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('interesting-facts')" :active="request()->routeIs('interesting-facts')">
-                {{ __('Занимливости') }}
+            <x-responsive-nav-link :href="route('growth')" :active="request()->routeIs('growth')">
+                {{ __('Раст и развој') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('child.index')" :active="request()->routeIs('child.index')">

@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\PageController::class, 'home']  )->name('home');
-Route::get('interesting-facts', [\App\Http\Controllers\PageController::class, 'interesting_facts']  )->name('interesting-facts');
-
+Route::get('/growth', [\App\Http\Controllers\GrowthFactController::class, 'index']  )->name('growth');
 
 
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
 
     // general routes
     Route::get('child', [\App\Http\Controllers\ChildController::class, 'index'])->name('child.index');

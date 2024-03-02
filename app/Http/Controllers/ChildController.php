@@ -67,14 +67,13 @@ class ChildController extends Controller
 
         if ($request->hasFile('childPhoto')) {
 
-            $image = $child->getMedia('profile_images')->first();
-            if ($image) {
-                $image->delete();
+            $photo = $request->file('childPhoto');
+            $name = sprintf('avatar.%s', $photo->getClientOriginalExtension());
+            $path = sprintf('child_galleries/%s/%s', $child->id, $name);
+            if ($photo->storeAs('public/'.$path)) {
+                $child->photo = $path;
+                $child->save();
             }
-
-            $image = $request->file('childPhoto');
-            $child->addMedia($image)->toMediaCollection('profile_images');
-
         }
         $child->save();
 

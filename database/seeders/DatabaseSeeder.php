@@ -22,10 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MedicalTreatmentTypeSeeder::class);
         $this->call(FeedingTypeSeeder::class);
         $this->call(ChildrenSeeder::class);
-
-
-
-
+        $this->call(GrowthFactSeeder::class);
 
     }
 }
