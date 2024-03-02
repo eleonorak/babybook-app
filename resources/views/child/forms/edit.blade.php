@@ -3,9 +3,9 @@
     {{ method_field('PATCH') }}
 
 
-    <div class="w-full h-auto overflow-scroll block h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-4 flex items-center justify-center" >
-        <div class="bg-white py-6 px-10 sm:max-w-md w-full ">
-            <div class="sm:text-3xl text-2xl font-semibold text-center text-sky-600  mb-12 mt-[150px]">
+    <div class=" pt-10 flex items-center justify-center" >
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full py-6 px-10 sm:max-w-md">
+            <div class="sm:text-3xl text-2xl font-semibold text-center text-sky-600  mb-12 mt-[30px]">
                 Промена на податоци за вашето бебе
             </div>
             <div class="">

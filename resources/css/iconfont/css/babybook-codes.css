@@ -1,0 +1,5 @@
+
+.babybook-plus:before { content: '\e800'; } /* '' */
+.babybook-floppy:before { content: '\e801'; } /* '' */
+.babybook-angle-left:before { content: '\f104'; } /* '' */
+.babybook-angle-right:before { content: '\f105'; } /* '' */

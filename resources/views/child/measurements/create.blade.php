@@ -1,27 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-block">
-            {{ __('Мое бебе') }}
-        </h2>
-
+        <x-nav-avatar photo="{{ $child->profile_photo }}" name="{{ $child->name }}"/>
+        <div class="flex inline-flex items-center gap-4 float-right">
+            <x-btn-link href="{{  isset($measurementType) && $measurementType ? route('child.measurements.create',['child'=>$child->id]) : route('child.measurements.index', ['child' => $child]) }}"><span class="babybook-angle-left"></span> Назад</x-btn-link>
+        </div>
+    </x-slot>
 
     @if($measurementType)
-
-
-            <div class="sm:col-span-4 float-right px-2">
-                <a href="{{ route('child.measurements.create',['child'=>$child->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Назад</a>
-            </div>
-        </x-slot>
         @include('child.measurements.forms.measurement-create')
-
     @else
-            <div class="sm:col-span-4 float-right px-2">
-                <a href="{{ route('child.measurements.index',['child'=>$child->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Назад</a>
-            </div>
-        </x-slot>
         @include('child.measurements.forms.measurement-types')
     @endif
-
 </x-app-layout>
 
 

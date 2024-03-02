@@ -1,16 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-block">
-            {{ __('Мое бебе') }}
-        </h2>
-
-        <div class="sm:col-span-4 float-right px-2">
-            <a href="{{ route('child.sleep-periods.index',['child'=>$child->id]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Назад</a>
+        <x-nav-avatar photo="{{ $child->profile_photo }}" name="{{ $child->name }}"/>
+        <div class="flex inline-flex items-center gap-4 float-right">
+            <x-btn-link href="{{ route('child.sleep-periods.index', ['child' => $child]) }}"><span class="babybook-angle-left"></span> Назад</x-btn-link>
         </div>
     </x-slot>
-
-
     @include('child.sleep-periods.forms.create');
-
-
 </x-app-layout>

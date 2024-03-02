@@ -24,7 +24,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     // general routes
-    Route::get('child', [\App\Http\Controllers\ChildController::class, 'index'])->name('child.index');
+    Route::get('children', [\App\Http\Controllers\ChildController::class, 'index'])->name('child.index');
     Route::get('children/create', [\App\Http\Controllers\ChildController::class, 'create'] )->name('child.create');
     Route::get('children/{child}/edit', [\App\Http\Controllers\ChildController::class, 'edit'] )->name('child.edit');
     Route::post('children/store', [\App\Http\Controllers\ChildController::class, 'store'] )->name('child.store');

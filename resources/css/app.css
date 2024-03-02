@@ -1,9 +1,9 @@
 @import 'flatpickr/dist/flatpickr.css';
+@import 'iconfont/css/babybook.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 
 .tabs-content-item.inactive {

@@ -16,12 +16,12 @@
                         {{ __('Почетна') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('growth')" :active="request()->routeIs('growth')">
-                        {{ __('Раст и развој') }}
+                    <x-nav-link :href="route('child.index')" :active="request()->routeIs('child.*')">
+                        {{ __('Мое Бебе') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('child.index')" :active="request()->routeIs('child.index')">
-                        {{ __('Мое Бебе') }}
+                    <x-nav-link :href="route('growth')" :active="request()->routeIs('growth')">
+                        {{ __('Раст и развој') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -45,7 +45,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Корисничка сметка') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -55,7 +55,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Одјава') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -88,12 +88,12 @@
                 {{ __('Почетна') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('growth')" :active="request()->routeIs('growth')">
-                {{ __('Раст и развој') }}
+            <x-responsive-nav-link :href="route('child.index')" :active="request()->routeIs('child.*')">
+                {{ __('Мое Бебе') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('child.index')" :active="request()->routeIs('child.index')">
-                {{ __('Мое Бебе') }}
+            <x-responsive-nav-link :href="route('growth')" :active="request()->routeIs('growth')">
+                {{ __('Раст и развој') }}
             </x-responsive-nav-link>
         </div>
 
@@ -108,7 +108,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Корисничка сметка') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -118,7 +118,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Одјава') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
