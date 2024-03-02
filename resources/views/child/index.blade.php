@@ -14,7 +14,7 @@
             @foreach($children->chunk(2) as $group)
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     @foreach($group as $child)
-                        <div class="relative shadow-xl bg-white overflow-hidden hover:shadow-2xl group rounded-xl p-5 transition-all duration-500 transform">
+                        <div class="relative shadow bg-white overflow-hidden hover:shadow-2xl group rounded-xl p-5 transition-all duration-500 transform">
                             <div class="flex items-center gap-4">
                                 <div class="absolute group-hover:top-1 delay-300 top-16 transition-all duration-500 right-1 rounded-lg">
                                     <div class="flex justify-evenly items-center gap-2 p-2 text-white">
