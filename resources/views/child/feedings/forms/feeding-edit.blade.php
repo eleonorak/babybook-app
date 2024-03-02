@@ -62,13 +62,13 @@
                     <input type="hidden" id="feedingType" name="feeding_type_id" value="{{$feeding->type ? $feeding->type->id : ''}}">
                     <input type="hidden" id="" name="measurable" value="{{ $feeding->type ? (int) $feeding->type->measurable : 0}}">
 
-                    <button type="submit"  name="submit" value="1"  class=" rounded-full  p-3 w-full sm:w-56   bg-gradient-to-r from-sky-600  to-teal-300 text-white text-lg font-semibold " >
-                        Внеси
-                    </button>
+                    <x-btn-primary size="large" type="submit"  name="submit" value="1">
+                        <span class="babybook-floppy"></span> Зачувај
+                    </x-btn-primary>
                 </div>
                 <div class="flex justify-center my-6">
-                    <a href="{{route('child.feedings.index', ['child'=>$child->id ])}}" class="text-center rounded-full  p-3 w-full sm:w-56   bg-gradient-to-r from-sky-600  to-teal-300 text-white text-lg font-semibold " >
-                        Откажи
+                    <a href="{{route('child.feedings.index', ['child'=>$child->id ])}}">
+                        <span class="babybook-angle-left"></span> Откажи
                     </a>
                 </div>
                 @if (session('status') === 'record-updated')

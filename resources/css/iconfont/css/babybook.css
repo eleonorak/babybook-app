@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'babybook';
-  src: url('../font/babybook.eot?27435276');
-  src: url('../font/babybook.eot?27435276#iefix') format('embedded-opentype'),
-       url('../font/babybook.woff2?27435276') format('woff2'),
-       url('../font/babybook.woff?27435276') format('woff'),
-       url('../font/babybook.ttf?27435276') format('truetype'),
-       url('../font/babybook.svg?27435276#babybook') format('svg');
+  src: url('../font/babybook.eot?69368111');
+  src: url('../font/babybook.eot?69368111#iefix') format('embedded-opentype'),
+       url('../font/babybook.woff2?69368111') format('woff2'),
+       url('../font/babybook.woff?69368111') format('woff'),
+       url('../font/babybook.ttf?69368111') format('truetype'),
+       url('../font/babybook.svg?69368111#babybook') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'babybook';
-    src: url('../font/babybook.svg?27435276#babybook') format('svg');
+    src: url('../font/babybook.svg?69368111#babybook') format('svg');
   }
 }
 */
@@ -56,5 +56,7 @@
 
 .babybook-plus:before { content: '\e800'; } /* '' */
 .babybook-floppy:before { content: '\e801'; } /* '' */
+.babybook-edit:before { content: '\e802'; } /* '' */
+.babybook-trash-empty:before { content: '\e803'; } /* '' */
 .babybook-angle-left:before { content: '\f104'; } /* '' */
 .babybook-angle-right:before { content: '\f105'; } /* '' */

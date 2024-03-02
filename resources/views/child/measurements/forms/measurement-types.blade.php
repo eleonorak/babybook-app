@@ -11,10 +11,9 @@
 
                 <div class="flex justify-center my-6">
                     @foreach($measurementTypes as $item)
-                        <button type="submit" name="measurementType" value="{{$item->id}}"
-                                class=" rounded-full  p-3 w-full sm:w-56   bg-gradient-to-r from-sky-600  to-teal-300 text-white text-lg font-semibold ">
+                        <x-btn-primary type="submit" name="measurementType" value="{{$item->id}}">
                             {{$item->name}}
-                        </button>
+                        </x-btn-primary>
                     @endforeach
                 </div>
             </div>

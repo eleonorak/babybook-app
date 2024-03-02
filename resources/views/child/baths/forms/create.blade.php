@@ -30,14 +30,14 @@
                 </div>
 
                 <div class="flex justify-center my-6">
-                    <button type="submit"  name="submit" value="1"  class=" rounded-full  p-3 w-full sm:w-56   bg-gradient-to-r from-sky-600  to-teal-300 text-white text-lg font-semibold " >
-                        Внеси
-                    </button>
+                    <x-btn-primary size="large" type="submit"  name="submit" value="1">
+                        <span class="babybook-floppy"></span> Внеси
+                    </x-btn-primary>
                 </div>
                 <div class="flex justify-center my-6">
-                    <a href="{{route('child.baths.index',['child'=>$child->id])}}" class="text-center rounded-full  p-3 w-full sm:w-56   bg-gradient-to-r from-sky-600  to-teal-300 text-white text-lg font-semibold " >
-                        Откажи
-                    </a>
+                    <x-btn-link href="{{route('child.baths.index',['child'=>$child->id])}}">
+                        <span class="babybook-angle-left"></span> Откажи
+                    </x-btn-link>
                 </div>
             </div>
 
