@@ -7,7 +7,10 @@ use App\Models\Vaccine;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ChildrenSeeder extends Seeder
 {
@@ -16,36 +19,37 @@ class ChildrenSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        $childOne = Child::query()->create([
-            'name' => 'Анастасија',
-            'birth_date' => '2021-12-20',
-            'gender' => 'женско',
-            'photo' =>'',
-        ]);
-        $childSec = Child::query()->create([
-            'name' => 'Bebe X',
-            'birth_date' => '2023-6-20',
-            'gender' => 'машко',
-            'photo' =>'',
-        ]);
 
-        DB::table('child_user')->insert([
-            'user_id'=>1,
-            'child_id'=>$childOne->id
-        ]);
+        /* @var Child[] $children */
+        $children = [];
+        $childrenData = [
+            [
+                'id' => 1,
+                'name' => 'Анастасија',
+                'birth_date' => '2021-12-20',
+                'gender' => 'F',
+                'photo' =>'child_galleries/1/avatar.jpg',
+            ],
 
-        DB::table('child_user')->insert([
-            'user_id'=>1,
-            'child_id'=>$childSec->id
-        ]);
+            [
+                'id' => 2,
+                'name' => 'Марко',
+                'birth_date' => '2023-6-20',
+                'gender' => 'M',
+                'photo' =>'child_galleries/2/avatar.jpg',
+            ]
+        ];
 
-
-        /**
-         * @var Child[] $children
-         */
-        $children = [$childOne, $childSec];
-
+        foreach ($childrenData as $childData) {
+            $child = Child::query()->create($childData);
+            Storage::disk('local')->makeDirectory('public/child_galleries/'.$child->id);
+            Storage::disk('local')->put("public/child_galleries/" . $child->id . "/avatar.jpg", file_get_contents(database_path("seeders/static/children/" . $child->id . ".jpg")));
+            DB::table('child_user')->insert([
+                'user_id' => 1,
+                'child_id' => $child->id
+            ]);
+            $children[] = $child;
+        }
 
         /*********** SLEEP PERIODS, BATHS, FEEDINGS & DIAPER CHANGES ************/
 
@@ -141,7 +145,7 @@ class ChildrenSeeder extends Seeder
             for ($i = 0; $i < mt_rand(3, 9); $i++) {
                 $t_time = $birth_date->toImmutable()->addMonth();
                 if ($t_time < Carbon::now()) {
-                    $childOne->medical_treatments()->create([
+                    $child->medical_treatments()->create([
                         'medical_treatment_type_id' => mt_rand(2, 3),
                         'date' => $birth_date->toImmutable()->addMonth()->week(mt_rand(1, 2))->day(mt_rand(2, 3))->hour(mt_rand(9, 10))->toDateTimeString(),
                     ]);
@@ -151,21 +155,21 @@ class ChildrenSeeder extends Seeder
 
         /*********** MEASUREMENTS ************/
 
-        $childOne->measurements()->create([
+        $children[0]->measurements()->create([
             'measurement_type_id'=>2,
             'value'   => 58,
             'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
             'unit_id' => 3,
         ]);
 
-        $childOne->measurements()->create([
+        $children[0]->measurements()->create([
             'measurement_type_id'=>3,
             'value'   => 6,
             'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
             'unit_id' => 1,
         ]);
 
-        $childOne->measurements()->create([
+        $children[0]->measurements()->create([
             'measurement_type_id'=>1,
             'value'   => 35.0,
             'date'    => Carbon::now()->subHours(5)->toDateTimeString(),

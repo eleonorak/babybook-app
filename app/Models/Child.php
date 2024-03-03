@@ -55,7 +55,7 @@ class Child extends Model
     }
 
     public function getProfilePhotoAttribute() {
-        return $this->photo ? url('storage/'.$this->photo) : url('images/avatar.png');
+        return $this->photo ? url('storage/'.$this->photo) : url('images/avatar.jpg');
     }
 
     public function getGallery($max) {
