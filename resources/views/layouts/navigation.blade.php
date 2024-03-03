@@ -17,7 +17,7 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('child.index')" :active="request()->routeIs('child.*')">
-                        {{ __('Мое Бебе') }}
+                        {{ __('Дневник') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('vaccines.index')" :active="request()->routeIs('vaccines.index')">
@@ -93,7 +93,7 @@
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('child.index')" :active="request()->routeIs('child.*')">
-                {{ __('Мое Бебе') }}
+                {{ __('Дневник') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('vaccines.index')" :active="request()->routeIs('vaccines.index')">

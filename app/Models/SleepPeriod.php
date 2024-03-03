@@ -13,4 +13,8 @@ class SleepPeriod extends Model
 
     protected $casts = ['start' => 'datetime', 'end' => 'datetime'];
 
+    public function child(){
+        return  $this->belongsTo(Child::class, 'child_id', 'id');
+    }
+
 }

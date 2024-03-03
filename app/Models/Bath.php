@@ -12,4 +12,7 @@ class Bath extends Model
 
     protected $casts = ['date' => 'datetime'];
 
+    public function child(){
+        return  $this->belongsTo(Child::class, 'child_id', 'id');
+    }
 }

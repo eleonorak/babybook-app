@@ -29,4 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     })
 
+    document.querySelectorAll('button[data-dropdown-toggle]').forEach(function(item, index) {
+        item.addEventListener('click', function(e){
+            e.preventDefault();
+            let value = this.dataset.dropdownToggle;
+            let target = document.getElementById(value);
+            if(target) {
+                target.classList.toggle('hidden');
+            }
+        })
+    })
+
 })

@@ -7,5 +7,7 @@
 
     <x-container>
 
+        @include(sprintf('home.widgets.activity.%s', $activity['view']), $activity)
+
     </x-container>
 </x-app-layout>

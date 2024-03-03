@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'verified'])->group(function () {
 
     // General pages
-    Route::get('/', [\App\Http\Controllers\PageController::class, 'home']  )->name('home');
+    Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']  )->name('home');
     Route::get('/growth', [\App\Http\Controllers\GrowthFactController::class, 'index']  )->name('growth.index');
     Route::get('/vaccines', [\App\Http\Controllers\VaccineController::class, 'index']  )->name('vaccines.index');
 

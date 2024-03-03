@@ -19,4 +19,8 @@ class Measurement extends Model
     public function unit(){
         return $this->belongsTo(Unit::class);
     }
+
+    public function child(){
+        return  $this->belongsTo(Child::class, 'child_id', 'id');
+    }
 }

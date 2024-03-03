@@ -11,4 +11,8 @@ class DiaperChange extends Model
     protected $guarded = ['id'];
 
     protected $casts = ['date' => 'datetime'];
+
+    public function child(){
+        return  $this->belongsTo(Child::class, 'child_id', 'id');
+    }
 }
