@@ -18,6 +18,10 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'weight_unit_id' => ['required', 'exists:units,id'],
+            'temperature_unit_id' => ['required', 'exists:units,id'],
+            'height_unit_id' => ['required', 'exists:units,id'],
+            'volume_unit_id' => ['required', 'exists:units,id'],
         ];
     }
 }

@@ -47,6 +47,46 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="temperature_unit_id" :value="__('Мерка за температура')" />
+            <x-dropdown-input id="temperature_unit_id" name="temperature_unit_id" class="mt-1 block w-full" required>
+                @foreach($units->where('type', '=', 'temperature') as $unit)
+                    <option value="{{ $unit->id }}" {{ old('temperature_unit_id', $user->temperature_unit_id) == $unit->id ? 'selected' : '' }}>{{ $unit->name }}</option>
+                @endforeach
+            </x-dropdown-input>
+            <x-input-error class="mt-2" :messages="$errors->get('temperature_unit_id')" />
+        </div>
+
+        <div>
+            <x-input-label for="volume_unit_id" :value="__('Мерка за волумен')" />
+            <x-dropdown-input id="volume_unit_id" name="volume_unit_id " class="mt-1 block w-full" required>
+                @foreach($units->where('type', '=', 'volume') as $unit)
+                    <option value="{{ $unit->id }}" {{ old('volume_unit_id', $user->volume_unit_id ) == $unit->id ? 'selected' : '' }}>{{ $unit->name }}</option>
+                @endforeach
+            </x-dropdown-input>
+            <x-input-error class="mt-2" :messages="$errors->get('volume_unit_id')" />
+        </div>
+
+        <div>
+            <x-input-label for="length_unit_id" :value="__('Мерка за должина')" />
+            <x-dropdown-input id="length_unit_id" name="length_unit_id" class="mt-1 block w-full" required>
+                @foreach($units->where('type', '=', 'length') as $unit)
+                    <option value="{{ $unit->id }}" {{ old('length_unit_id', $user->length_unit_id) == $unit->id ? 'selected' : '' }}>{{ $unit->name }}</option>
+                @endforeach
+            </x-dropdown-input>
+            <x-input-error class="mt-2" :messages="$errors->get('length_unit_id')" />
+        </div>
+
+        <div>
+            <x-input-label for="weight_unit_id" :value="__('Мерка за тежина')" />
+            <x-dropdown-input id="weight_unit_id" name="weight_unit_id" class="mt-1 block w-full" required>
+                @foreach($units->where('type', '=', 'weight') as $unit)
+                    <option value="{{ $unit->id }}" {{ old('weight_unit_id', $user->weight_unit_id) == $unit->id ? 'selected' : '' }}>{{ $unit->name }}</option>
+                @endforeach
+            </x-dropdown-input>
+            <x-input-error class="mt-2" :messages="$errors->get('weight_unit_id')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
