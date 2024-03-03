@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
         $this->call(UnitSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(MeasurementTypeSeeder::class);
@@ -24,7 +23,5 @@ class DatabaseSeeder extends Seeder
         $this->call(ChildrenSeeder::class);
         $this->call(GrowthFactSeeder::class);
         $this->call(VaccineSeeder::class);
-
-
     }
 }

@@ -22,7 +22,7 @@
                     </li>
                 @endforeach
             </ul>
-            <div class="tabs-content p-6 bg-white overflow-hidden shadow-sm sm:rounded-lg w-full">
+            <div class="tabs-content p-6 bg-white overflow-hidden shadow sm:rounded-lg w-full">
                 @foreach($items as $item)
                     <div class="tabs-content-item {{ $item->number === $active ? 'active' : 'inactive' }}">
                         <h2 class="text-xl font-bold text-gray-900 mb-2">{{ sprintf('Напредување на бебето во месец %d', $item->number) }}</h2>

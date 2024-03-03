@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("color");
-
+            $table->tinyInteger('is_vac')->default(0);
         });
     }
 

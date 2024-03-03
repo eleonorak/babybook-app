@@ -7,6 +7,7 @@ use App\Http\Requests\MedicalTreatmentUpdateRequest;
 use App\Models\Child;
 use App\Models\MedicalTreatment;
 use App\Models\MedicalTreatmentType;
+use App\Models\Vaccine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -36,11 +37,15 @@ class ChildMedicalTreatmentController extends Controller
         }
         //dd($type);
 
-
+        $vaccines = [];
+        if($type && $type->is_vac) {
+            $vaccines = Vaccine::orderBy('age', 'ASC')->get();
+        }
 
         return view('child.medical-treatments.create', [
             'medicalTreatmentTypes' => $medicalTreatmentTypes,
             'medicalTreatmentType' => $type,
+            'vaccines' => $vaccines,
             'child' => $child,
             //'user' => $request->user(),
         ]);
@@ -48,25 +53,43 @@ class ChildMedicalTreatmentController extends Controller
 
     public  function store(MedicalTreatmentStoreRequest $request,Child $child){
         $data = $request->validated();
-        $child->medical_treatments()->create($data);
+        $treatment = $child->medical_treatments()->create($data);
+        if($treatment->type && $treatment->type->is_vac) {
+            $vaccines = $request->get('vaccines');
+            $vaccines = is_array($vaccines) ? array_filter($vaccines) : [];
+            $treatment->vaccines()->sync($vaccines);
+        }
+
         return Redirect::route('child.medical-treatments.index',['child'=>$child->id]);
 
 
     }
     public function edit(Request $request, Child $child, MedicalTreatment $medicalTreatment){
 
+        $vaccines = [];
+        if($medicalTreatment->type && $medicalTreatment->type->is_vac) {
+            $vaccines = Vaccine::orderBy('age', 'ASC')->get();
+        }
+
         return view('child.medical-treatments.edit',[
             'child' => $child,
             'medicalTreatment' => $medicalTreatment,
+            'vaccines' => $vaccines,
         ]);
     }
 
     public function update(MedicalTreatmentUpdateRequest $request,Child $child, MedicalTreatment $medicalTreatment){
 
         $data = $request->validated();
+
         $medicalTreatment->fill($data);
         $medicalTreatment->save();
 
+        if($medicalTreatment->type && $medicalTreatment->type->is_vac) {
+            $vaccines = $request->get('vaccines');
+            $vaccines = is_array($vaccines) ? array_filter($vaccines) : [];
+            $medicalTreatment->vaccines()->sync($vaccines);
+        }
 
         return Redirect::route('child.medical-treatments.edit',['child'=>$child->id,'medical_treatment'=>$medicalTreatment->id])->with('status', 'record-updated');
 

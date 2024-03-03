@@ -5,8 +5,8 @@
             <x-btn-link href="{{  isset($medicalTreatmentType) && $medicalTreatmentType ? route('child.medical-treatments.create',['child'=>$child->id]) : route('child.medical-treatments.index', ['child' => $child]) }}"><span class="babybook-angle-left"></span> Назад</x-btn-link>
         </div>
     </x-slot>
-    @if($measurementType)
-        @include('child.medical-treatments.forms.medical-treatment-types')
+    @if($medicalTreatmentType)
+        @include('child.medical-treatments.forms.medical-treatment-create')
     @else
         @include('child.medical-treatments.forms.medical-treatment-types')
     @endif

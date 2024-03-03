@@ -17,20 +17,21 @@ class MedicalTreatmentTypeSeeder extends Seeder
             [
                 'name' => 'Вакцинација',
                 'color' => '#8b5cf6',
+                'is_vac' => 1,
 
             ],
             [
                 'name' => 'Лекови',
                 'color' => '#aed581',
-
             ],
         ];
 
         foreach ($medicalTreatmentTypes as $medicalTreatmentType)
         {
-         MedicalTreatmentType::query()->create([
+            MedicalTreatmentType::query()->create([
                'name'  => $medicalTreatmentType['name'],
                'color'  => $medicalTreatmentType['color'],
+                'is_vac' => isset($medicalTreatmentType['is_vac']) ? (int) $medicalTreatmentType['is_vac'] : 0,
             ]);
         }
     }

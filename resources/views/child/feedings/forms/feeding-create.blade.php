@@ -3,7 +3,7 @@
 
     <div
         class=" pt-10 flex items-center justify-center">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full py-6 px-10 sm:max-w-md">
+        <div class="bg-white overflow-hidden shadow sm:rounded-lg w-full py-6 px-10 sm:max-w-md">
             @php
                 $typeName = $feedingType->name;
                 @endphp

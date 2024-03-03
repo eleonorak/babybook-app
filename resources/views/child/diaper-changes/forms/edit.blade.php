@@ -5,7 +5,7 @@
 
     <div
         class=" pt-10 flex items-center justify-center">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg w-full py-6 px-10 sm:max-w-md">
+        <div class="bg-white overflow-hidden shadow sm:rounded-lg w-full py-6 px-10 sm:max-w-md">
 
             <div class="sm:text-3xl text-2xl font-semibold text-center text-sky-600  mb-12 mt-[30px]">
                 Промена на податоци за промена на пелена
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="flex justify-center my-6">
-                    <x-btn-primary type="submit"  name="submit" value="1">
+                    <x-btn-primary size="large" type="submit"  name="submit" value="1">
                         <span class="babybook-floppy"></span> Зачувај
                     </x-btn-primary>
                 </div>

@@ -13,7 +13,7 @@
     </x-slot>
 
     <x-container>
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="bg-white overflow-hidden shadow sm:rounded-lg">
             <div class="p-6 text-gray-900">
                 @php
                     $current = 0;

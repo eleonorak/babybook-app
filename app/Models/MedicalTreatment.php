@@ -16,5 +16,9 @@ class MedicalTreatment extends Model
         return $this->belongsTo(MedicalTreatmentType::class,'medical_treatment_type_id','id');
     }
 
+    public function vaccines() {
+        return $this->belongsToMany(Vaccine::class);
+    }
+
 
 }
