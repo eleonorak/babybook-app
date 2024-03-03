@@ -58,7 +58,7 @@ class ChildrenSeeder extends Seeder
                     $startH = mt_rand($period[0][0], $period[0][1]);
                     $endH = mt_rand($period[1][0], $period[1][1]);
                     $timeS = Carbon::now()->subDays($i)->hour($startH)->minute(mt_rand(0,60));
-                    $timeE = Carbon::now()->subDays($i+1)->hour($endH)->minute(mt_rand(0,60));
+                    $timeE = Carbon::now()->subDays($i-1)->hour($endH)->minute(mt_rand(0,60));
                     $child->sleep_periods()->create([
                         'start' => $timeS->toDateTimeString(),
                         'end' => $timeE->toDateTimeString(),
