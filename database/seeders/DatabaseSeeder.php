@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(FeedingTypeSeeder::class);
         $this->call(ChildrenSeeder::class);
         $this->call(GrowthFactSeeder::class);
+        $this->call(VaccineSeeder::class);
+
 
     }
 }

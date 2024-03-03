@@ -20,7 +20,11 @@
                         {{ __('Мое Бебе') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('growth')" :active="request()->routeIs('growth')">
+                    <x-nav-link :href="route('vaccines.index')" :active="request()->routeIs('vaccines.index')">
+                        {{ __('Вакцини') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('growth.index')" :active="request()->routeIs('growth.index')">
                         {{ __('Раст и развој') }}
                     </x-nav-link>
                 </div>
@@ -92,7 +96,11 @@
                 {{ __('Мое Бебе') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('growth')" :active="request()->routeIs('growth')">
+            <x-responsive-nav-link :href="route('vaccines.index')" :active="request()->routeIs('vaccines.index')">
+                {{ __('Вакцини') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('growth.index')" :active="request()->routeIs('growth.index')">
                 {{ __('Раст и развој') }}
             </x-responsive-nav-link>
         </div>

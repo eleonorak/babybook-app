@@ -19,7 +19,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // General pages
     Route::get('/', [\App\Http\Controllers\PageController::class, 'home']  )->name('home');
-    Route::get('/growth', [\App\Http\Controllers\GrowthFactController::class, 'index']  )->name('growth');
+    Route::get('/growth', [\App\Http\Controllers\GrowthFactController::class, 'index']  )->name('growth.index');
+    Route::get('/vaccines', [\App\Http\Controllers\VaccineController::class, 'index']  )->name('vaccines.index');
 
     // general routes
     Route::get('children', [\App\Http\Controllers\ChildController::class, 'index'])->name('child.index');
