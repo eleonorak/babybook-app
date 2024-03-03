@@ -9,7 +9,7 @@
             </svg>
         </button>
         <!-- Dropdown menu -->
-        <div id="dropdownAction" class="fixed z-10 hidden bg-white right-4 divide-y divide-gray-100 rounded-lg shadow w-44">
+        <div id="dropdownAction" class="absolute z-10 hidden bg-white right-4 divide-y divide-gray-100 rounded-lg shadow w-44">
             @foreach($types as $key => $type)
                 <div class="py-1 text-center">
                     <a href="{{ explode('?', url()->current())[0].'?activity='.$key }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ $type }}</a>
