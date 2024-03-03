@@ -15,13 +15,13 @@
             <div class="border-l-2 mt-10">
                 @if(!$measurements->isEmpty())
                     @foreach ($measurements as $measurement)
-                        <div style="background-color: {{$measurement->type ? $measurement->type->color : '#ccc'}}" class="transform transition cursor-pointer hover:-translate-y-2 ml-10 relative flex items-center px-6 py-4 bg-blue-600 text-white rounded mb-8 flex-col md:flex-row space-y-4 md:space-y-0">
-                            <div  style="background-color: {{$measurement->type ? $measurement->type->color : '#ccc'}}" class="w-5 h-5 bg-blue-600 absolute -left-10 transform -translate-x-2/4 rounded-full z-10 mt-2 md:mt-0"></div>
-                            <div  style="background-color: {{$measurement->type ? $measurement->type->color : '#ccc'}}" class="w-10 h-1 bg-blue-300 absolute -left-10 z-0"></div>
+                        <div style="border-color: {{  $measurement->type ? $measurement->type->color : '#f0f0f0' }}" class="border-l-8 bg-white shadow transform transition cursor-pointer hover:-translate-y-2 ml-10 relative flex items-center px-6 py-4 bg-blue-600 rounded mb-8 flex-col md:flex-row space-y-4 md:space-y-0">
+                            <div class="bg-white shadow w-5 h-5 bg-blue-600 absolute -left-10 transform -translate-x-2/4 rounded-full z-10 mt-2 md:mt-0"></div>
+                            <div class="bg-white shadow w-10 h-1 bg-blue-300 absolute -left-10 z-0"></div>
                             <div class="flex-auto">
                                 <h1 class="text-xl font-bold">{{$measurement->type ? $measurement->type->name : ''}}</h1>
                                 <h3>Вредност : {{$measurement->value}} {{$measurement->unit ? $measurement->unit->name : ''}}</h3>
-                                <h1 class="text-lg">Време : {{\App\Helpers\Date::format($measurement->date)}}</h1>
+                                <h2 class="text-lg">Време : {{\App\Helpers\Date::format($measurement->date)}}</h2>
                                 @if($measurement->notes)
                                     <h3>Забелешка :  {{$measurement->notes}}</h3>
                                 @endif

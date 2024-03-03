@@ -14,7 +14,7 @@ class ChildSleepPeriodController extends Controller
     //
 
     public function index(Request $request, Child $child ){
-        $sleepPeriods = $child->sleep_periods()->orderBy('start','desc')->paginate(1);
+        $sleepPeriods = $child->sleep_periods()->orderBy('start','desc')->paginate(6);
 
         return view('child.sleep-periods.index',[
             'child' => $child,

@@ -14,9 +14,9 @@
             <div class="border-l-2 mt-10">
                 @if(!$feedings->isEmpty())
                     @foreach ($feedings as $feeding)
-                        <div style="background-color: {{$feeding->type ? $feeding->type->color : '#ccc'}}" class="transform transition cursor-pointer hover:-translate-y-2 ml-10 relative flex items-center px-6 py-4 bg-blue-600 text-white rounded mb-8 flex-col md:flex-row space-y-4 md:space-y-0">
-                            <div  style="background-color: {{$feeding->type->color}}" class="w-5 h-5 bg-blue-600 absolute -left-10 transform -translate-x-2/4 rounded-full z-10 mt-2 md:mt-0"></div>
-                            <div  style="background-color: {{$feeding->type->color}}" class="w-10 h-1 bg-blue-300 absolute -left-10 z-0"></div>
+                        <div style="border-color: {{  $feeding->type ? $feeding->type->color : '#f0f0f0' }}" class="border-l-8 bg-white shadow transform transition cursor-pointer hover:-translate-y-2 ml-10 relative flex items-center px-6 py-4 bg-blue-600 rounded mb-8 flex-col md:flex-row space-y-4 md:space-y-0">
+                            <div class="bg-white shadow w-5 h-5 bg-blue-600 absolute -left-10 transform -translate-x-2/4 rounded-full z-10 mt-2 md:mt-0"></div>
+                            <div class="bg-white shadow w-10 h-1 bg-blue-300 absolute -left-10 z-0"></div>
                             <div class="flex-auto">
                                 <h1 class="text-xl font-bold">{{$feeding->type ? $feeding->type->name : ''}}</h1>
                                 @php
@@ -25,7 +25,7 @@
                                 @if($isMeasurable == 1 )
                                     <h3>Количина : {{$feeding->quantity}} {{$feeding->unit ? $feeding->unit->name : ''}}</h3>
                                 @endif
-                                <h1 class="text-lg">Време : {{\App\Helpers\Date::format($feeding->date)}}</h1>
+                                <h2 class="text-lg">Време : {{\App\Helpers\Date::format($feeding->date)}}</h2>
                                 @if($feeding->notes)
                                     <h3>Забелешка :  {{$feeding->notes}}</h3>
                                 @endif

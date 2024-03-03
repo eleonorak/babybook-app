@@ -16,7 +16,7 @@ class ChildMedicalTreatmentController extends Controller
     //
     public function index(Request $request, Child $child)
     {
-        $medicalTreatments = $child->medical_treatments()->orderBy('date', 'desc')->paginate(1);
+        $medicalTreatments = $child->medical_treatments()->orderBy('date', 'desc')->paginate(6);
 
         return view('child.medical-treatments.index', [
             'medicalTreatments' => $medicalTreatments,

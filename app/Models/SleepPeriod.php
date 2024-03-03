@@ -11,6 +11,6 @@ class SleepPeriod extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = ['date' => 'datetime'];
+    protected $casts = ['start' => 'datetime', 'end' => 'datetime'];
 
 }

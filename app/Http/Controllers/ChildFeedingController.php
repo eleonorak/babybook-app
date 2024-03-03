@@ -16,7 +16,7 @@ class ChildFeedingController extends Controller
     //
 
     public function index(Request $request,Child $child){
-        $feedings = $child->feedings()->orderBy('date','desc')->paginate(3);
+        $feedings = $child->feedings()->orderBy('date','desc')->paginate(6);
 
         return view('child.feedings.index',[
             'feedings' => $feedings,

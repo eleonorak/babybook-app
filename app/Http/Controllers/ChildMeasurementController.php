@@ -16,7 +16,7 @@ class ChildMeasurementController extends Controller
     //
     public function index(Request $request, Child $child)
     {
-        $measurements = $child->measurements()->orderBy('date', 'desc')->paginate(1);
+        $measurements = $child->measurements()->orderBy('date', 'desc')->paginate(6);
 
         return view('child.measurements.index', [
             'measurements' => $measurements,

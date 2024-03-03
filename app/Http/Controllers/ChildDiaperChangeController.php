@@ -13,7 +13,7 @@ class ChildDiaperChangeController extends Controller
 {
     //
     public function index(Request $request,Child $child){
-        $diaperChanges = $child->diaper_changes()->orderBy('date','desc')->paginate(1);
+        $diaperChanges = $child->diaper_changes()->orderBy('date','desc')->paginate(6);
 
         return view('child.diaper-changes.index',[
             'child' => $child,

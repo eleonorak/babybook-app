@@ -19,7 +19,7 @@
                     $current = 0;
                 @endphp
                 @foreach($items as $i => $row)
-                    <div class="grid grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         @foreach($row as $j => $month)
                             @include('child.gallery.item', ['key' => $current, 'item' => $month])
                             @php

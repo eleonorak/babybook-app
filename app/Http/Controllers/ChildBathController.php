@@ -13,7 +13,7 @@ class ChildBathController extends Controller
 {
     //
     public function index(Request $request,Child $child){
-        $baths = $child->baths()->orderBy('date','desc')->paginate(1);
+        $baths = $child->baths()->orderBy('date','desc')->paginate(6);
 
         return view('child.baths.index',[
             'child' => $child,
