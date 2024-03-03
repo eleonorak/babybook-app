@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Child;
+use App\Models\Vaccine;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -40,59 +41,115 @@ class ChildrenSeeder extends Seeder
         ]);
 
 
+        /**
+         * @var Child[] $children
+         */
+        $children = [$childOne, $childSec];
 
 
-        //$timeBack=now()->subMinutes(5)->toDateTimeString();
-        //$timeNow = now()->toDateTimeString();
+        /*********** SLEEP PERIODS, BATHS, FEEDINGS & DIAPER CHANGES ************/
 
-        $childOne->feedings()->create([
-            'date' => Carbon::now()->subHours(1)->toDateTimeString(),
-            'feeding_type_id' => 2 ,
-            'quantity' => 200.0,
-            'unit_id'=>5,
-        ]);
+        for($i = 30; $i >= 1; $i--) {
 
-        $childOne->feedings()->create([
-            'date' => Carbon::now()->subHours(2)->toDateTimeString(),
-            'feeding_type_id' => 2 ,
-            'quantity' => 200.0,
-            'unit_id'=>5,
-        ]);
+            // Sleep periods & Diaper Changes
+            foreach($children as $child) {
+                /* @var Child $child */
+                foreach([ [ [21,22], [7,10] ], [ [13,14], [14,16] ] ] as $period) {
+                    $startH = mt_rand($period[0][0], $period[0][1]);
+                    $endH = mt_rand($period[1][0], $period[1][1]);
+                    $timeS = Carbon::now()->subDays($i)->hour($startH)->minute(mt_rand(0,60));
+                    $timeE = Carbon::now()->subDays($i+1)->hour($endH)->minute(mt_rand(0,60));
+                    $child->sleep_periods()->create([
+                        'start' => $timeS->toDateTimeString(),
+                        'end' => $timeE->toDateTimeString(),
+                    ]);
 
-        $childOne->feedings()->create([
-            'date' => Carbon::now()->subHours(3)->toDateTimeString(),
-            'feeding_type_id' => 1 ,
-        ]);
-        $childOne->feedings()->create([
-            'date' => Carbon::now()->subHours(4)->toDateTimeString(),
-            'feeding_type_id' => 1 ,
-        ]);
+                    // Solid food in the mornings
+                    if($endH >= 7 && $endH <= 10) {
+                        $child->feedings()->create([
+                            'date' => $timeE->toImmutable()->addMinutes(mt_rand(1, 10))->toDateTimeString(),
+                            'feeding_type_id' => 3 ,
+                        ]);
+                    }
 
-        $childOne->feedings()->create([
-            'date' => Carbon::now()->subHours(5)->toDateTimeString(),
-            'feeding_type_id' => 3 ,
-        ]);
+                    // Bottle feed before sleep
+                    $child->feedings()->create([
+                        'date' => $timeS->toImmutable()->subMinutes(mt_rand(1, 5))->toDateTimeString(),
+                        'feeding_type_id' => 2 ,
+                        'quantity' => 200.0,
+                        'unit_id' => 5,
+                    ]);
 
-        $childOne->sleep_periods()->create([
-            'start' => Carbon::now()->subHours(1)->toDateTimeString(),
-            'end' => Carbon::now()->subHours(1)->toDateTimeString(),
+                    // Diaper change before sleep
+                    $child->diaper_changes()->create([
+                        'date' => $timeS->toImmutable()->subMinutes(mt_rand(5, 15))->toDateTimeString(),
+                    ]);
 
-            ]);
+                    // Diaper change after sleep
+                    $child->diaper_changes()->create([
+                        'date' => $timeE->toImmutable()->addMinutes(mt_rand(10,15))->toDateTimeString(),
+                    ]);
+                }
 
-        $childOne->sleep_periods()->create([
-        'start' => Carbon::now()->subHours(1)->toDateTimeString(),
-            'end' => Carbon::now()->subHours(1)->toDateTimeString(),
+                // Meal at 17
+                $child->feedings()->create([
+                    'date' => Carbon::now()->subDays($i)->hour(17)->minute(mt_rand(0, 60))->toDateTimeString(),
+                    'feeding_type_id' => 3,
+                ]);
 
-        ]);
+            }
 
+            // Baths & Diaper Changes
+            foreach($children as $j => $child) {
+                /* @var Child $child */
+                if($i % 2 == 0 && $j % 2 == 1) {
+                    $startH = mt_rand(18, 20);
+                    $bathS = Carbon::now()->subDays($i)->hour($startH)->minute(mt_rand(0,60));
+                    $child->baths()->create([
+                        'date' => $bathS->toDateTimeString()
+                    ]);
+                    $child->diaper_changes()->create([
+                        'date' => $bathS->toImmutable()->addMinutes(mt_rand(10,20))->toDateTimeString(),
+                    ]);
+                }
 
-        $childOne->diaper_changes()->create([
-            'date' => Carbon::now()->subHours(5)->toDateTimeString(),
-        ]);
+            }
+        }
 
-        $childOne->baths()->create([
-            'date' => Carbon::now()->subHours(5)->toDateTimeString(),
-        ]);
+        /*********** MEDICAL TREATMENTS ************/
+        foreach($children as $child) {
+
+            /* @var \Carbon\Carbon $birth_date */
+            $birth_date = $child->birth_date;
+            $age_in_hrs = Carbon::now()->startOfDay()->diffInHours($birth_date);
+
+            foreach(Vaccine::all() as $vaccine) {
+
+                if( (int) $vaccine->age <= (int) $age_in_hrs) {
+                    $treatment = $child->medical_treatments()->create([
+                        'medical_treatment_type_id' => 1, // Vaccine
+                        'date' => $birth_date->toImmutable()->addHours( $vaccine->age)->addDays(mt_rand(0, 5))->toDateTimeString()
+                    ]);
+                    if ($treatment) {
+                        $treatment->vaccines()->sync($vaccine->id);
+                    }
+                }
+
+            }
+
+            // Other treatments
+            for ($i = 0; $i < mt_rand(3, 9); $i++) {
+                $t_time = $birth_date->toImmutable()->addMonth();
+                if ($t_time < Carbon::now()) {
+                    $childOne->medical_treatments()->create([
+                        'medical_treatment_type_id' => mt_rand(2, 3),
+                        'date' => $birth_date->toImmutable()->addMonth()->week(mt_rand(1, 2))->day(mt_rand(2, 3))->hour(mt_rand(9, 10))->toDateTimeString(),
+                    ]);
+                }
+            }
+        }
+
+        /*********** MEASUREMENTS ************/
 
         $childOne->measurements()->create([
             'measurement_type_id'=>2,
@@ -109,20 +166,10 @@ class ChildrenSeeder extends Seeder
         ]);
 
         $childOne->measurements()->create([
-           'measurement_type_id'=>1,
+            'measurement_type_id'=>1,
             'value'   => 35.0,
             'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
             'unit_id' => 3,
-        ]);
-
-        $childOne->medical_treatments()->create([
-            'medical_treatment_type_id'=>2,
-            'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
-        ]);
-
-        $childOne->medical_treatments()->create([
-            'medical_treatment_type_id'=>1,
-            'date'    => Carbon::now()->subHours(5)->toDateTimeString(),
         ]);
 
     }

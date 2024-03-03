@@ -10,6 +10,7 @@ import.meta.glob(['../images/**',]);
 
 import './dates.js';
 
+import Chart from 'chart.js/auto';
 
 document.addEventListener('DOMContentLoaded', function () {
 

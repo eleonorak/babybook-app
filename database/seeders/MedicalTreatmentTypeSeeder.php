@@ -13,16 +13,18 @@ class MedicalTreatmentTypeSeeder extends Seeder
     public function run(): void
     {
         $medicalTreatmentTypes = [
-
             [
                 'name' => 'Вакцинација',
                 'color' => '#8b5cf6',
                 'is_vac' => 1,
-
             ],
             [
                 'name' => 'Лекови',
                 'color' => '#aed581',
+            ],
+            [
+                'name' => 'Прегледи',
+                'color' => '#d3b693',
             ],
         ];
 
