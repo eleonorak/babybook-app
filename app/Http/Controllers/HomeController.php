@@ -9,9 +9,12 @@ use App\Models\Measurement;
 use App\Models\MedicalTreatment;
 use App\Models\SleepPeriod;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -21,10 +24,48 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+
+
         return view("home", [
-                'activity' => $this->getActivityWidget($request)
+                'activity' => $this->getActivityWidget($request),
+                'sleepChart' => $this->getSleepChartData($request),
             ]
         );
+    }
+
+    /**
+     * Sleep chart widget endpoint
+     * @param Request $request
+     * @return array
+     */
+    public function getSleepChartData(Request $request) {
+
+        $user = Auth::user();
+
+        if($request->has('sleep-chart-period')) {
+            Cache::put('default_sleep_chart_periods_'.$user->id, $request->get('sleep-chart-period'));
+        }
+        $period = Cache::get('default_sleep_chart_periods_'.$user->id);
+
+        $periods = [];
+        $now = Carbon::now();
+        for($i = 1; $i <= 24; $i++) {
+            $start = $now->toImmutable()->startOfWeek()->format('Y-m-d');
+            $end = $now->toImmutable()->endOfWeek()->format('Y-m-d');
+            $periods[sprintf('%s~%s', $start, $end)] = [
+                'start' => $start,
+                'end' => $end,
+            ];
+            $now->startOfWeek()->subWeek();
+        }
+
+        $period = $period ? $period : array_key_first($periods);
+
+        return [
+            'period' => $period,
+            'periods' => $periods,
+        ];
+
     }
 
     /**

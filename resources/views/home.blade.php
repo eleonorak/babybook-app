@@ -7,7 +7,11 @@
 
     <x-container>
 
-        @include(sprintf('home.widgets.activity.%s', $activity['view']), $activity)
+        <div class="flex flex-col gap-10">
+            @include(sprintf('home.widgets.activity.%s', $activity['view']), $activity)
+            @include('home.widgets.charts.sleep', $sleepChart)
+        </div>
+
 
     </x-container>
 </x-app-layout>

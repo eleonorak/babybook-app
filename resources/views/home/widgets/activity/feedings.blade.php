@@ -7,6 +7,9 @@
                 Дете
             </th>
             <th scope="col" class="px-6 py-3">
+                Тип
+            </th>
+            <th scope="col" class="px-6 py-3">
                 Време
             </th>
             <th scope="col" class="px-6 py-3">
@@ -25,6 +28,9 @@
                             <div class="font-normal text-gray-500">{{ $record->child->birthdate }}</div>
                         </div>
                     </th>
+                    <td class="px-6 py-4">
+                        {{ !empty($record->type) ? $record->type->name : '' }}
+                    </td>
                     <td class="px-6 py-4">
                         {{ \App\Helpers\Date::format( $record->date ) }}
                     </td>

@@ -22,6 +22,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/growth', [\App\Http\Controllers\GrowthFactController::class, 'index']  )->name('growth.index');
     Route::get('/vaccines', [\App\Http\Controllers\VaccineController::class, 'index']  )->name('vaccines.index');
 
+    // Charts
+    Route::get('/charts/sleep', [\App\Http\Controllers\Charts\SleepChartController::class, 'index']  )->name('charts.sleep.index');
+
     // general routes
     Route::get('children', [\App\Http\Controllers\ChildController::class, 'index'])->name('child.index');
     Route::get('children/create', [\App\Http\Controllers\ChildController::class, 'create'] )->name('child.create');
