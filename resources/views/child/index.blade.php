@@ -50,8 +50,8 @@
                 </div>
             @endforeach
         @else
-            <div class="text-center bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
-                <p class="font-bold">Не се пронајдени податоци за деца</p>
+            <div class="shadow rounded p-8 bg-white" role="alert">
+                <p>Не се пронајдени податоци за деца, ве молиме додадете.</p>
             </div>
         @endif
     </x-container>
