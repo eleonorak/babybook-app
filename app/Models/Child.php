@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Child extends Model
 {
@@ -48,6 +50,20 @@ class Child extends Model
 
     public function medical_treatments(){
         return $this->hasMany(MedicalTreatment::class);
+    }
+
+    public function vaccinations() {
+        return DB::table('medical_treatments as MT')
+            ->join('medical_treatment_vaccine as MTV', 'MT.id', '=', 'MTV.medical_treatment_id')
+            ->join('vaccines as V', 'MTV.vaccine_id', '=', 'V.id')
+            ->where('MT.child_id', '=', $this->id)
+            ->select(DB::raw('V.id as vaccine_id, V.name as vaccine_name, MT.date as vaccinated_at'))
+            ->get();
+    }
+
+
+    public function getHoursAge() {
+        return Carbon::now()->diffInHours($this->birth_date);
     }
 
     public function photos(){

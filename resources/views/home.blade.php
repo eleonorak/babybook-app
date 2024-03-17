@@ -10,6 +10,7 @@
         <div class="flex flex-col gap-10">
             @include(sprintf('home.widgets.activity.%s', $activity['view']), $activity)
             @include('home.widgets.charts.sleep', $sleepChart)
+            @include('home.widgets.vaccines.index', $vaccines)
         </div>
 
 

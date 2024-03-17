@@ -1,5 +1,5 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white">
-    <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white p-4">
+    <div class="flex items-center justify-between border-b flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white p-4">
         <div><h2 class="text-lg font-semibold font-">Спиење по периоди</h2></div>
         <div>
             <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction2" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-4 py-2" type="button">

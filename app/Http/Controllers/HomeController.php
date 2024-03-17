@@ -9,6 +9,7 @@ use App\Models\Measurement;
 use App\Models\MedicalTreatment;
 use App\Models\SleepPeriod;
 use App\Models\User;
+use App\Models\Vaccine;
 use Carbon\Carbon;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
@@ -29,6 +30,7 @@ class HomeController extends Controller
         return view("home", [
                 'activity' => $this->getActivityWidget($request),
                 'sleepChart' => $this->getSleepChartData($request),
+                'vaccines' => $this->getVaccinesData($request)
             ]
         );
     }
@@ -131,5 +133,22 @@ class HomeController extends Controller
                 'feedings' => 'Хранење'
             ]
         ];
+    }
+
+    /**
+     * The vaccines data
+     * @param Request $request
+     * @return array
+     */
+    public function getVaccinesData(Request $request) {
+
+        $vaccines = Vaccine::orderBy('age', 'ASC')->get();
+        $children = \auth()->user()->children;
+
+        return [
+            'vaccines' => $vaccines,
+            'children' => $children,
+        ];
+
     }
 }

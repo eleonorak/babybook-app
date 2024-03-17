@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('.tabs-nav-item').forEach(function (item, index) {
         item.addEventListener('click', function (e) {
+            e.preventDefault();
             this.closest('.tabs').querySelectorAll('.active').forEach(function (activeItem) {
                 activeItem.classList.remove('active');
                 activeItem.classList.add('inactive');
