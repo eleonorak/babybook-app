@@ -3,5 +3,8 @@
 .babybook-floppy:before { content: '\e801'; } /* '' */
 .babybook-edit:before { content: '\e802'; } /* '' */
 .babybook-trash-empty:before { content: '\e803'; } /* '' */
+.babybook-hospital:before { content: '\f0f8'; } /* '' */
+.babybook-medkit:before { content: '\f0fa'; } /* '' */
+.babybook-h-sigh:before { content: '\f0fd'; } /* '' */
 .babybook-angle-left:before { content: '\f104'; } /* '' */
 .babybook-angle-right:before { content: '\f105'; } /* '' */
