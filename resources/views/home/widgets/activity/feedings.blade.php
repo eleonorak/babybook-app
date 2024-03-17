@@ -41,7 +41,9 @@
             @endforeach
         @else
             <tr class="bg-white">
-                <td class="px-6 py-4" colspan="3">Не се пронајдени резултати</td>
+                <td class="px-6 py-4" colspan="4">
+                    @include('home.global.no-data')
+                </td>
             </tr>
         @endif
         </tbody>

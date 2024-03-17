@@ -73,7 +73,7 @@
                 </div>
             </div>
         @else
-            <p>Нема достапни информации за деца</p>
+            @include('home.global.no-data')
         @endif
     </div>
 </div>
