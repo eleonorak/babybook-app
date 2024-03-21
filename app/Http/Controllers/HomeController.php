@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bath;
+use App\Models\ChildPhoto;
 use App\Models\DiaperChange;
 use App\Models\Feeding;
 use App\Models\Measurement;
@@ -30,7 +31,8 @@ class HomeController extends Controller
         return view("home", [
                 'activity' => $this->getActivityWidget($request),
                 'sleepChart' => $this->getSleepChartData($request),
-                'vaccines' => $this->getVaccinesData($request)
+                'vaccines' => $this->getVaccinesData($request),
+                'gallery' => $this->getGalleryData($request),
             ]
         );
     }
@@ -148,6 +150,28 @@ class HomeController extends Controller
         return [
             'vaccines' => $vaccines,
             'children' => $children,
+        ];
+
+    }
+
+    /**
+     * The gallery data
+     * @param Request $request
+     * @return array
+     */
+    public function getGalleryData(Request $request) {
+        $childrenIds = Auth::user()->children->map(function($item){
+            return $item->id;
+        });
+
+        $gallery = ChildPhoto::query()
+                        ->whereIn('child_id', $childrenIds)
+                        ->orderBy('created_at', 'desc')
+                        ->limit(10)
+                        ->get();
+
+        return [
+            'photos' => $gallery
         ];
 
     }

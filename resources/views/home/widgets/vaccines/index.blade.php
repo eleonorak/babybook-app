@@ -1,4 +1,4 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white">
+<div class="relative overflow-visible shadow-md sm:rounded-lg bg-white">
     <div
         class="flex items-center justify-between border-b flex-col flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white p-4">
         <div><h2 class="text-lg font-semibold font-">Вакцинација</h2></div>

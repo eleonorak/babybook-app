@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('child_id');
             $table->text('path');
-            $table->string('type')->unique();
+            $table->string('type');
             $table->timestamps();
         });
         Schema::table('child_photos',function (Blueprint $table){

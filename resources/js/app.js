@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setTimeout(async function () {
         let canvas = document.getElementById('sleepChart');
+        if(!canvas) {
+            return;
+        }
         let context = canvas.getContext('2d');
         let url = '/charts/sleep';
         if(canvas.dataset?.periodStart && canvas.dataset?.periodEnd) {
@@ -60,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     datasets: response.data.datasets
                 },
                 options: {
+                    animation: false,
                     scales: {
                         y: {
                             beginAtZero: true

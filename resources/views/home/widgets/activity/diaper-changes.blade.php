@@ -1,4 +1,4 @@
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+<div class="relative overflow-visible shadow-md sm:rounded-lg">
     @include('home.widgets.activity.global.header', $activity)
     <table class="border-t w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-gray-700 uppercase  bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-b">

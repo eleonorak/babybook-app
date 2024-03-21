@@ -43,8 +43,13 @@ class ChildController extends Controller
 
         if ($child && $request->hasFile('childPhoto')) {
 
-            $image = $request->file('childPhoto');
-            $child->addMedia($image)->toMediaCollection('profile_images');
+            $photo = $request->file('childPhoto');
+            $name = sprintf('avatar.%s', $photo->getClientOriginalExtension());
+            $path = sprintf('child_galleries/%s/%s', $child->id, $name);
+            if ($photo->storeAs('public/'.$path)) {
+                $child->photo = $path;
+                $child->save();
+            }
 
         }
         return Redirect::route('child.index');

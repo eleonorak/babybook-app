@@ -18,7 +18,7 @@ class ChildUpdateRequest extends FormRequest
         return [
             'name' => 'required|string|max:300',
             'gender' => 'required',
-            'birth_date' =>'required|date_format:Y-m-d|before:today',
+            'birth_date' =>'required|date_format:Y-m-d',
         ];
     }
 }
